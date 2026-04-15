@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Ayam - RASTA Chicken</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f5f5f5; margin:0; }
+    header { background:#2e7d32; color:white; padding:15px; text-align:center; }
+    .container { padding:20px; }
+    .card { background:white; padding:15px; border-radius:10px; margin-bottom:15px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    input, select, textarea, button {
+      width:100%; padding:10px; margin-top:10px; border-radius:8px; border:1px solid #ccc;
+    }
+    button { background:#2e7d32; color:white; font-weight:bold; border:none; }
+  </style>
+</head>
+<body><header>
+  <h2>RASTA Chicken</h2>
+  <p>Pesan Ayam Broiler/Pedaging - Bisa Potong & Bersih Gratis...!</p>
+</header><div class="container">  <div class="card">
+    <h3>Form Pemesanan</h3><input type="text" id="nama" placeholder="Nama Anda">
+<input type="text" id="hp" placeholder="Nomor HP / WhatsApp">
+
+<select id="jenis">
+  <option value="">Pilih Jenis Ayam</option>
+  <option>Ayam Hidup</option>
+  <option>Ayam Potong</option>
+</select>
+
+<input type="number" id="jumlah" placeholder="Jumlah (ekor)">
+
+<select id="layanan" onchange="togglePotongan()">
+  <option value="">Pilih Layanan</option>
+  <option>Tidak</option>
+  <option>Potong</option>
+  <option>Bersih Bulu Saja</option>
+  <option>Potong + Bersihkan Bulu + Cincang</option>
+</select>
+
+<select id="potongan" style="display:none;">
+  <option value="">Pilih Jumlah Potongan</option>
+  <option>4 potong /ekor</option>
+  <option>8 potong /ekor</option>
+  <option>12 potong /ekor</option>
+  <option>16 potong /ekor</option> 
+  <option>20 potong /ekor</option>
+  <option>22 potong /ekor</option>
+</select>
+
+<textarea id="alamat" placeholder="Alamat Pengantaran"></textarea>
+
+<button onclick="kirimWA()">Pesan Sekarang</button>
+
+  </div></div><script>
+function togglePotongan() {
+  var layanan = document.getElementById('layanan').value;
+  var potongan = document.getElementById('potongan');
+
+  if (layanan.includes('Potong')) {
+    potongan.style.display = 'block';
+  } else {
+    potongan.style.display = 'none';
+  }
+}
+
+function kirimWA() {
+  var nama = document.getElementById('nama').value;
+  var hp = document.getElementById('hp').value;
+  var jenis = document.getElementById('jenis').value;
+  var jumlah = document.getElementById('jumlah').value;
+  var layanan = document.getElementById('layanan').value;
+  var potongan = document.getElementById('potongan').value;
+  var alamat = document.getElementById('alamat').value;
+
+  var pesan = "*Halo, Saya mau pesan Ayam:*%0A" +
+              "Nama: *" + nama + "*%0A" +
+              "HP: " + hp + "%0A" +
+              "Jenis: *" + jenis + "*%0A" +
+              "Jumlah: *" + jumlah + " ekor*%0A" +
+              "Layanan: *" + layanan + "*%0A" +
+              (potongan ? "Potongan: *" + potongan + "*%0A" : "") +
+              "Alamat: *" + alamat + "*";
+
+  var nomor = "6282278861707";
+
+  window.open("https://wa.me/" + nomor + "?text=" + pesan, '_blank');
+}
+</script></body>
+</html>
