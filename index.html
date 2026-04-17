@@ -1,81 +1,76 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RASTA Chicken - Order Ayam Broiler</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f6f8;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RASTA Chicken - Order Ayam Broiler</title>
 
-    header {
-      background: linear-gradient(135deg, #2e7d32, #1b5e20);
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f6f8;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
+header {
+  background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
 
-    header p {
-      margin: 5px 0 0;
-      font-size: 14px;
-    }
+header h1 { margin: 0; font-size: 22px; }
+header p { margin: 5px 0 0; font-size: 14px; }
 
-    .container {
-      padding: 15px;
-      max-width: 600px;
-      margin: auto;
-    }
+.container {
+  padding: 15px;
+  max-width: 600px;
+  margin: auto;
+}
 
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
 
-    .info {
-      background: #e8f5e9;
-      padding: 10px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      font-size: 13px;
-    }
+.info {
+  background: #e8f5e9;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
 
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button {
+  width: 100%;
+  padding: 12px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    button:hover {
-      background: #1b5e20;
-    }
-  </style>
+button:hover {
+  background: #1b5e20;
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -84,72 +79,72 @@
 </header>
 
 <div class="container">
+<div class="card">
 
-  <div class="card">
+<div class="info">
+📌 Pesan sekarang, ayam segar langsung dari peternakan<br>
+🎉 Melayani pesanan partai kecil/besar untuk acara keluarga / pesta<br>
+🚚 Bisa antar ke rumah<br>
+🔪 Bisa potong sesuai permintaan
+</div>
 
-    <div class="info">
-      📌 Pesan sekarang, ayam segar langsung dari peternakan<br>
-      🎉 Melayani pesanan partai kecil/besar untuk acara keluarga / pesta<br>
-      🚚 Bisa antar ke rumah<br>
-      🔪 Bisa potong sesuai permintaan
-    </div>
+<input type="text" id="nama" placeholder="Nama Anda">
+<input type="text" id="hp" placeholder="Nomor WhatsApp">
 
-    <input type="text" id="nama" placeholder="Nama Anda">
-    <input type="text" id="hp" placeholder="Nomor WhatsApp">
+<select id="jenis">
+  <option value="">Pilih Jenis Ayam</option>
+  <option>Ayam Hidup</option>
+  <option>Ayam Potong</option>
+</select>
 
-    <select id="jenis">
-      <option value="">Pilih Jenis Ayam</option>
-      <option>Ayam Hidup</option>
-      <option>Ayam Potong</option>
-    </select>
+<input type="number" id="jumlah" placeholder="Jumlah (ekor)">
 
-    <input type="number" id="jumlah" placeholder="Jumlah (ekor)">
-    
-    <select id="harga">
-      <option value="">Pilih Harga / Berat Hidup</option>
-      <option value="50000">Rp50rb (0.8-1.0kg)</option>
-      <option value="55000">Rp55rb (1.0-1.2kg)</option>
-      <option value="65000">Rp65rb (1.3-1.4 kg)</option>
-      <option value="75000">Rp75rb (1.5-1.6 kg)</option>
-      <option value="80000">Rp80rb (1.7-1.8 kg)</option>
-      <option value="90000">Rp90rb (1.8-2.0kg)</option>
-      <option value="100000">Rp100rb (2.1-2.3 kg)</option>
-    </select>
-    
-    <select id="layanan" onchange="togglePotongan()">
-      <option value="">Pilih Layanan</option>
-      <option>Tidak</option>
-      <option>Bersih Bulu Saja</option>
-      <option>Bersikan Bulu + Potong</option>
-    </select>
+<select id="harga">
+  <option value="">Pilih Harga / Berat Hidup</option>
+  <option value="50000">Rp50rb (0.8-1.0kg)</option>
+  <option value="55000">Rp55rb (1.0-1.2kg)</option>
+  <option value="65000">Rp65rb (1.3-1.4 kg)</option>
+  <option value="75000">Rp75rb (1.5-1.6 kg)</option>
+  <option value="80000">Rp80rb (1.7-1.8 kg)</option>
+  <option value="90000">Rp90rb (1.8-2.0kg)</option>
+  <option value="100000">Rp100rb (2.1-2.3 kg)</option>
+</select>
 
-    <select id="potongan" style="display:none;">
-      <option value="">Pilih Potongan</option>
-      <option>4 potong</option>
-      <option>8 potong</option>
-      <option>10 potong</option>
-      <option>12 potong</option>
-      <option>14 potong</option>
-      <option>16 potong</option>
-      <option>18 potong</option>
-      <option>20 potong</option>
-      <option>22 potong</option>
-    </select>
-    
-    <select id="pengambilan">
-      <option value="">Pilih Pengambilan</option>
-      <option>Ambil di tempat</option>
-      <option>Diantar ke rumah</option>
-    </select>
-    <textarea id="alamat" placeholder="Alamat lengkap"></textarea>
+<select id="layanan" onchange="togglePotongan()">
+  <option value="">Pilih Layanan</option>
+  <option>Tidak</option>
+  <option>Bersih Bulu Saja</option>
+  <option>Bersihkan Bulu + Potong</option>
+</select>
 
-    <button onclick="kirimWA()">📲 Pesan Sekarang via WhatsApp</button>
+<select id="potongan" style="display:none;">
+  <option value="">Pilih Jumlah Potongan</option>
+  <option>4 potong</option>
+  <option>8 potong</option>
+  <option>10 potong</option>
+  <option>12 potong</option>
+  <option>14 potong</option>
+  <option>16 potong</option>
+  <option>18 potong</option>
+  <option>20 potong</option>
+  <option>22 potong</option>
+</select>
 
-  </div>
+<select id="pengambilan">
+  <option value="">Pilih Pengambilan</option>
+  <option>Ambil di tempat</option>
+  <option>Diantar ke rumah</option>
+</select>
 
+<textarea id="alamat" placeholder="Alamat lengkap"></textarea>
+
+<button onclick="kirimWA()">📲 Pesan Sekarang via WhatsApp</button>
+
+</div>
 </div>
 
 <script>
+
 function togglePotongan() {
   var layanan = document.getElementById('layanan').value;
   var potongan = document.getElementById('potongan');
@@ -158,6 +153,7 @@ function togglePotongan() {
     potongan.style.display = 'block';
   } else {
     potongan.style.display = 'none';
+    potongan.value = "";
   }
 }
 
@@ -166,23 +162,35 @@ function kirimWA() {
   var hp = document.getElementById('hp').value;
   var jenis = document.getElementById('jenis').value;
   var jumlah = document.getElementById('jumlah').value;
+
+  var hargaSelect = document.getElementById('harga');
+  var hargaText = hargaSelect.options[hargaSelect.selectedIndex].text;
+
   var layanan = document.getElementById('layanan').value;
   var potongan = document.getElementById('potongan').value;
   var alamat = document.getElementById('alamat').value;
+  var pengambilan = document.getElementById('pengambilan').value;
 
-  var pesan = "*Halo kaka, Saya mau pesan Ayam..*%0A%0A" +
-              "Nama: *" + nama + "*%0A" +
-              "WhatsApp: *" + hp + "*%0A" +
-              "Jenis: *" + jenis + "*%0A" +
-              "Jumlah: *" + jumlah + " ekor*%0A" +
-              "Layanan: *" + layanan + "*%0A" +
-              (potongan ? "Potongan: *" + potongan + "*%0A" : "") +
-              "Alamat: *" + alamat + "*";
+  var pesan =
+`*Halo kaka, Saya mau pesan Ayam..*
+
+Nama: *${nama}*
+WhatsApp: *${hp}*
+Jenis: *${jenis}*
+Jumlah: *${jumlah} ekor*
+Harga: *${hargaText}*
+Layanan: *${layanan}*
+${potongan ? "Potongan: *" + potongan + "*\n" : ""}Pengambilan: *${pengambilan}*
+Alamat: *${alamat}*`;
 
   var nomor = "6282278861707";
 
-  window.open("https://wa.me/" + nomor + "?text=" + pesan, '_blank');
+  window.open(
+    "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan),
+    "_blank"
+  );
 }
+
 </script>
 
 </body>
