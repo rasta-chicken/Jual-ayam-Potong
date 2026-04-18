@@ -201,7 +201,7 @@ function kirimWA() {
   var jumlah = document.getElementById('jumlah').value;
 
   var hargaSelect = document.getElementById('harga');
-  var hargaValue = hargaSelect.value;
+  var hargaText = hargaSelect.options[hargaSelect.selectedIndex].text;
   var layanan = document.getElementById('layanan').value;
   var potongan = document.getElementById('potongan').value;
   var alamat = document.getElementById('alamat').value;
@@ -213,7 +213,7 @@ Nama        : *${nama}*
 WhatsApp: *${hp}*
 Jenis         : *${jenis}*
 Jumlah     : *${jumlah} ekor*
-Harga        : *Rp${hargaValue}*
+Harga        : *${hargaText}*
 Layanan   : *${layanan}*
 ${potongan ? "Potongan : *" + potongan + "*\n" : ""}Pengambilan: *${pengambilanTerpilih}*
 Alamat     : *${alamat}*`;
