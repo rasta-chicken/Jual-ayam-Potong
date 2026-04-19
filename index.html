@@ -27,18 +27,9 @@ header {
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
+header h1 { margin: 0; font-size: 24px; }
+header p { margin: 5px 0 0; font-size: 13px; opacity: 0.9; }
 
-header p {
-  margin: 5px 0 0;
-  font-size: 13px;
-  opacity: 0.9;
-}
-
-/* CONTAINER */
 .container {
   padding: 15px;
   max-width: 600px;
@@ -100,7 +91,7 @@ option[disabled] {
 
 .option-btn {
   flex: 1;
-  height: 38px;
+  height: 40px;
   border: none;
   background: #f1f1f1;
   color: #444;
@@ -201,7 +192,6 @@ button.main:hover {
   <option>22 potong /ekor</option>
 </select>
 
-<!-- PENGAMBILAN (BUTTON TOGGLE) -->
 <label><b>Pengambilan</b></label>
 <div class="option-group">
   <button type="button" class="option-btn" onclick="setPengambilan(this,'Ambil di tempat')">Ambil di tempat</button>
@@ -216,7 +206,6 @@ button.main:hover {
 </div>
 
 <script>
-
 let pengambilanTerpilih = "";
 
 function setPengambilan(el, value) {
@@ -268,7 +257,6 @@ Alamat     : *${alamat}*`;
     "_blank"
   );
 }
-
 </script>
 
 </body>
