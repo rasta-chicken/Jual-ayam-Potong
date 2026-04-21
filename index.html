@@ -427,14 +427,14 @@ function kirimWA() {
     alert("Lengkapi dulu semua data!");
     return;
   }
-
-  if (!/^08\d{9,12}$/.test(hp)) {
-    alert("Nomor WhatsApp tidak valid!");
+  
+  if (pengambilanTerpilih === "Diantar ke rumah" && !alamat) {
+    alert("Isi alamat dulu!");
     return;
   }
-
-  if (hp.trim().length < 12) {
-    alert("Nomor WhatsApp Belum Lengkap!");
+  
+  if (!/^08\d{9,12}$/.test(hp)) {
+    alert("Nomor WhatsApp tidak valid!");
     return;
   }
 
