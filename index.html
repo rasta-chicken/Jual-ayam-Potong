@@ -428,8 +428,8 @@ function kirimWA() {
     return;
   }
 
-  if (pengambilanTerpilih === "Diantar ke rumah" && !alamat) {
-    alert("Isi alamat dulu!");
+  if (!/^08\d{9,12}$/.test(hp)) {
+    alert("Nomor WhatsApp tidak valid!");
     return;
   }
 
