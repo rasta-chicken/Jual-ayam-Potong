@@ -6,9 +6,7 @@
 <title>RASTA Chicken - Order Ayam Broiler</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   font-family: Arial, sans-serif;
@@ -50,23 +48,31 @@ header p { margin: 5px 0 0; font-size: 14px; }
   border-left: 4px solid #2e7d32;
 }
 
-input, select, textarea {
-  width: 100%;
-  padding: 11px;
+/* EMOJI INPUT */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0 10px;
   margin-top: 8px;
   margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background: #fafafa;
-  transition: 0.25s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-input:focus, select:focus, textarea:focus {
-  border-color: #2e7d32;
+.input-group span {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.input-group input,
+.input-group select {
+  border: none;
   outline: none;
-  background: #fff;
+  flex: 1;
+  padding: 11px 0;
+  background: transparent;
+  font-size: 14px;
 }
 
 option[disabled] {
@@ -91,14 +97,11 @@ option[disabled] {
   border-radius: 10px;
   font-size: 12px;
   cursor: pointer;
-  transition: 0.25s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 .option-btn.active {
   background: linear-gradient(135deg, #2e7d32, #66bb6a);
   color: white;
-  transform: scale(1.05);
 }
 
 /* tombol utama */
@@ -111,17 +114,6 @@ button.main {
   border-radius: 12px;
   font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
-  transition: 0.25s;
-}
-
-button.main:hover {
-  transform: scale(1.02);
-  box-shadow: 0 5px 15px rgba(46,125,50,0.4);
-}
-
-button.main:active {
-  transform: scale(0.98);
 }
 </style>
 </head>
@@ -143,47 +135,69 @@ button.main:active {
 🔪 Bisa potong sesuai permintaan
 </div>
 
-<input type="text" id="nama" placeholder="👤 Nama Anda">
-<input type="text" id="hp" placeholder="📞 Nomor WhatsApp">
+<div class="input-group">
+  <span>👤</span>
+  <input type="text" id="nama" placeholder="Nama Anda">
+</div>
 
-<select id="jenis">
-  <option value="">🐔 Pilih Jenis Ayam</option>
-  <option>Ayam Hidup</option>
-  <option>Ayam Potong</option>
-</select>
+<div class="input-group">
+  <span>📞</span>
+  <input type="text" id="hp" placeholder="Nomor WhatsApp">
+</div>
 
-<input type="number" id="jumlah" placeholder="🔢 Jumlah (ekor)">
+<div class="input-group">
+  <span>🐔</span>
+  <select id="jenis">
+    <option value="">Pilih Jenis Ayam</option>
+    <option>Ayam Hidup</option>
+    <option>Ayam Potong</option>
+  </select>
+</div>
 
-<select id="harga">
-  <option value="">Pilih Harga / Berat Hidup</option>
-  <option value="50000" disabled>Rp50rb (0.8-1.0 kg) ❌Stok Habis</option>
-  <option value="55000" disabled>Rp55rb (1.0-1.2 kg) ❌Stok Habis</option>
-  <option value="65000" disabled>Rp65rb (1.3-1.4 kg) ❌Stok Habis</option>
-  <option value="75000" disabled>Rp75rb (1.5-1.6 kg) ❌Stok Habis</option>
-  <option value="80000" disabled>Rp80rb (1.7-1.8 kg) ❌Stok Habis</option>
-  <option value="90000">Rp90rb (1.9-2.0 kg) ✅Ready</option> 
-  <option value="100000" disabled>Rp100rb (2.1-2.3 kg) ❌Stok Habis</option>
-</select>
+<div class="input-group">
+  <span>🔢</span>
+  <input type="number" id="jumlah" placeholder="Jumlah (ekor)">
+</div>
 
-<select id="layanan" onchange="togglePotongan()">
-  <option value="">🔪 Pilih Layanan</option>
-  <option>Tidak</option>
-  <option>Bersih Bulu Saja</option>
-  <option>Bersihkan Bulu + Potong</option>
-</select>
+<div class="input-group">
+  <span>💰</span>
+  <select id="harga">
+    <option value="">Pilih Harga / Berat Hidup</option>
+    <option value="50000" disabled>Rp50rb (0.8-1.0 kg) ❌Stok Habis</option>
+    <option value="55000" disabled>Rp55rb (1.0-1.2 kg) ❌Stok Habis</option>
+    <option value="65000" disabled>Rp65rb (1.3-1.4 kg) ❌Stok Habis</option>
+    <option value="75000" disabled>Rp75rb (1.5-1.6 kg) ❌Stok Habis</option>
+    <option value="80000" disabled>Rp80rb (1.7-1.8 kg) ❌Stok Habis</option>
+    <option value="90000">Rp90rb (1.9-2.0 kg) ✅Ready</option> 
+    <option value="100000" disabled>Rp100rb (2.1-2.3 kg) ❌Stok Habis</option>
+  </select>
+</div>
 
-<select id="potongan" style="display:none;">
-  <option value="">🍗 Pilih Jumlah Potongan</option>
-  <option>4 potong /ekor</option>
-  <option>8 potong /ekor</option>
-  <option>10 potong /ekor</option>
-  <option>12 potong /ekor</option>
-  <option>14 potong /ekor</option>
-  <option>16 potong /ekor</option>
-  <option>18 potong /ekor</option>
-  <option>20 potong /ekor</option>
-  <option>22 potong /ekor</option>
-</select>
+<div class="input-group">
+  <span>🔪</span>
+  <select id="layanan" onchange="togglePotongan()">
+    <option value="">Pilih Layanan</option>
+    <option>Tidak</option>
+    <option>Bersih Bulu Saja</option>
+    <option>Bersihkan Bulu + Potong</option>
+  </select>
+</div>
+
+<div class="input-group" id="potongan-group" style="display:none;">
+  <span>🍗</span>
+  <select id="potongan">
+    <option value="">Pilih Jumlah Potongan</option>
+    <option>4 potong /ekor</option>
+    <option>8 potong /ekor</option>
+    <option>10 potong /ekor</option>
+    <option>12 potong /ekor</option>
+    <option>14 potong /ekor</option>
+    <option>16 potong /ekor</option>
+    <option>18 potong /ekor</option>
+    <option>20 potong /ekor</option>
+    <option>22 potong /ekor</option>
+  </select>
+</div>
 
 <label><b>Pengambilan</b></label>
 <div class="option-group">
@@ -209,46 +223,14 @@ function setPengambilan(el, value) {
 
 function togglePotongan() {
   var layanan = document.getElementById('layanan').value;
-  var potongan = document.getElementById('potongan');
+  var potonganGroup = document.getElementById('potongan-group');
 
   if (layanan.includes('Potong')) {
-    potongan.style.display = 'block';
+    potonganGroup.style.display = 'flex';
   } else {
-    potongan.style.display = 'none';
-    potongan.value = "";
+    potonganGroup.style.display = 'none';
+    document.getElementById('potongan').value = "";
   }
-}
-
-function kirimWA() {
-  var nama = document.getElementById('nama').value;
-  var hp = document.getElementById('hp').value;
-  var jenis = document.getElementById('jenis').value;
-  var jumlah = document.getElementById('jumlah').value;
-
-  var hargaSelect = document.getElementById('harga');
-  var hargaText = hargaSelect.options[hargaSelect.selectedIndex].text;
-  var layanan = document.getElementById('layanan').value;
-  var potongan = document.getElementById('potongan').value;
-  var alamat = document.getElementById('alamat').value;
-
-  var pesan =
-`*Halo kaka, Saya mau pesan Ayam..*
-
-Nama        : *${nama}*
-WhatsApp: *${hp}*
-Jenis         : *${jenis}*
-Jumlah     : *${jumlah} ekor*
-Harga        : *${hargaText}*
-Layanan   : *${layanan}*
-${potongan ? "Potongan : *" + potongan + "*\n" : ""}Pengambilan: *${pengambilanTerpilih}*
-Alamat     : *${alamat}*`;
-
-  var nomor = "6282278861707";
-
-  window.open(
-    "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan),
-    "_blank"
-  );
 }
 </script>
 
