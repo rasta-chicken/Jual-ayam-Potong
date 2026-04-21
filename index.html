@@ -288,15 +288,18 @@ button.main {
 
 <script>
 let pengambilanTerpilih = "";
+const ONGKIR = 5000;
 
+/* ========== PENGAMBILAN ========== */
 function setPengambilan(el, value) {
   document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
   el.classList.add('active');
   pengambilanTerpilih = value;
 
-  hitungTotal(); // 🔥 penting agar ongkir langsung update
+  hitungTotal();
 }
 
+/* ========== TOGGLE POTONGAN ========== */
 function togglePotongan() {
   var layanan = document.getElementById('layanan').value;
   var potonganGroup = document.getElementById('potongan-group');
@@ -307,35 +310,59 @@ function togglePotongan() {
     potonganGroup.style.display = 'none';
     document.getElementById('potongan').value = "";
   }
+}
 
-const ONGKIR = 5000;
-
-document.querySelectorAll('#harga, #jumlah').forEach(el => {
-  el.addEventListener('input', hitungTotal);
-  el.addEventListener('change', hitungTotal);
-});
-
+/* ========== HITUNG TOTAL ========== */
 function hitungTotal() {
   let harga = parseInt(document.getElementById('harga').value) || 0;
   let jumlah = parseInt(document.getElementById('jumlah').value) || 0;
 
   let totalHarga = harga * jumlah;
-
   let ongkir = (pengambilanTerpilih === "Diantar ke rumah") ? ONGKIR : 0;
-
   let totalBayar = totalHarga + ongkir;
 
   document.getElementById('totalHarga').value =
     totalHarga ? "Rp " + totalHarga.toLocaleString() : "";
 
   document.getElementById('ongkir').value =
-    ongkir ? "Rp " + ongkir.toLocaleString() : "Rp 0";
+    "Rp " + ongkir.toLocaleString();
 
   document.getElementById('totalBayar').value =
     totalBayar ? "Rp " + totalBayar.toLocaleString() : "";
 }
-}
 
+/* ========== EVENT LISTENER ========== */
+document.querySelectorAll('#harga, #jumlah').forEach(el => {
+  el.addEventListener('input', hitungTotal);
+  el.addEventListener('change', hitungTotal);
+});
+
+/* ========== VALIDASI CEKLIST ========== */
+document.querySelectorAll('.checkable input, .checkable select, .checkable textarea')
+.forEach(el => {
+  el.addEventListener('input', function() {
+    let group = this.parentElement;
+
+    if (this.id === "hp") {
+      if (this.value.trim().length >= 12) {
+        group.classList.add('filled');
+      } else {
+        group.classList.remove('filled');
+      }
+    } else {
+      if (this.value.trim() !== "") {
+        group.classList.add('filled');
+      } else {
+        group.classList.remove('filled');
+      }
+    }
+  });
+});
+
+/* ========== PANGGIL AWAL ========== */
+hitungTotal();
+
+/* ========== KIRIM WA ========== */
 function kirimWA() {
   var nama = document.getElementById('nama').value;
   var hp = document.getElementById('hp').value;
@@ -357,12 +384,12 @@ function kirimWA() {
     alert("Isi alamat dulu!");
     return;
   }
-  // validasi khusus nomor WA
+
   if (hp.trim().length < 12) {
     alert("Nomor WhatsApp Belum Lengkap!");
     return;
   }
-  
+
   var pesan =
 `Halo kak, saya mau pesan ayam:
 
@@ -380,30 +407,6 @@ ${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}📦 Pengambilan: *${pen
     "_blank"
   );
 }
-document.querySelectorAll('.checkable input, .checkable select, .checkable textarea')
-.forEach(el => {
-  el.addEventListener('input', function() {
-    let group = this.parentElement;
-
-    // khusus nomor WA
-    if (this.id === "hp") {
-      if (this.value.trim().length >= 12) {
-        group.classList.add('filled');
-      } else {
-        group.classList.remove('filled');
-      }
-    } 
-    // input lain tetap normal
-    else {
-      if (this.value.trim() !== "") {
-        group.classList.add('filled');
-      } else {
-        group.classList.remove('filled');
-      }
-    }
-  });
-});
 </script>
-
 </body>
 </html>
