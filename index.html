@@ -328,13 +328,13 @@ function hitungTotal() {
   let totalBayar = totalHarga + ongkir;
 
   document.getElementById('totalHarga').value =
-  totalHarga ? "Total Harga: Rp " + totalHarga.toLocaleString() : "";
+  "Total Harga: Rp " + totalHarga.toLocaleString();
 
 document.getElementById('ongkir').value =
   "Ongkir: Rp " + ongkir.toLocaleString();
 
 document.getElementById('totalBayar').value =
-  totalBayar ? "Total Bayar: Rp " + totalBayar.toLocaleString() : "";
+  "Total Bayar: Rp " + totalBayar.toLocaleString();
 }
 
 /* ========== EVENT LISTENER ========== */
