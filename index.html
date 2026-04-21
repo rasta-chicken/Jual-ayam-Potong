@@ -248,7 +248,41 @@ function togglePotongan() {
     document.getElementById('potongan').value = "";
   }
 }
+function kirimWA() {
+  var nama = document.getElementById('nama').value;
+  var hp = document.getElementById('hp').value;
+  var jenis = document.getElementById('jenis').value;
+  var jumlah = document.getElementById('jumlah').value;
+
+  var hargaSelect = document.getElementById('harga');
+  var hargaText = hargaSelect.options[hargaSelect.selectedIndex].text;
+  var layanan = document.getElementById('layanan').value;
+  var potongan = document.getElementById('potongan').value;
+  var alamat = document.getElementById('alamat').value;
+
+  var pesan =
+`*Halo kaka, Saya mau pesan Ayam..*
+
+Nama        : *${nama}*
+WhatsApp: *${hp}*
+Jenis         : *${jenis}*
+Jumlah     : *${jumlah} ekor*
+Harga        : *${hargaText}*
+Layanan   : *${layanan}*
+${potongan ? "Potongan : *" + potongan + "*\n" : ""}Pengambilan: *${pengambilanTerpilih}*
+Alamat     : *${alamat}*`;
+
+  var nomor = "6282278861707";
+
+  window.open(
+    "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan),
+    "_blank"
+  );
+}
 </script>
+
+</body>
+</html></script>
 
 </body>
 </html>
