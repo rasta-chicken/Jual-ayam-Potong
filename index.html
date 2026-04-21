@@ -307,6 +307,17 @@ ${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}📦 Pengambilan: *${pen
     "_blank"
   );
 }
+  document.querySelectorAll('.checkable input').forEach(el => {
+  el.addEventListener('input', function() {
+    let group = this.parentElement;
+
+    if (this.value.trim() !== "") {
+      group.classList.add('filled');
+    } else {
+      group.classList.remove('filled');
+    }
+  });
+});
 </script>
 
 </body>
