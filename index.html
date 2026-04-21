@@ -48,7 +48,6 @@ header p { margin: 5px 0 0; font-size: 14px; }
   border-left: 4px solid #2e7d32;
 }
 
-/* EMOJI INPUT */
 .input-group {
   display: flex;
   align-items: center;
@@ -66,7 +65,8 @@ header p { margin: 5px 0 0; font-size: 14px; }
 }
 
 .input-group input,
-.input-group select {
+.input-group select,
+.input-group textarea {
   border: none;
   outline: none;
   flex: 1;
@@ -80,7 +80,6 @@ option[disabled] {
   color: #999;
 }
 
-/* tombol pengambilan */
 .option-group {
   display: flex;
   gap: 10px;
@@ -104,7 +103,6 @@ option[disabled] {
   color: white;
 }
 
-/* tombol utama */
 button.main {
   width: 100%;
   padding: 14px;
@@ -115,18 +113,10 @@ button.main {
   font-size: 16px;
   font-weight: bold;
 }
+
 textarea {
-  width: 100%;
   min-height: 90px;
   resize: vertical;
-  padding: 11px;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background: #fafafa;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 </style>
 </head>
@@ -154,8 +144,8 @@ textarea {
 </div>
 
 <div class="input-group">
-  <span>📞</span>
-  <input type="text" id="hp" placeholder="Nomor WhatsApp">
+  <span>📱</span>
+  <input type="tel" id="hp" placeholder="Nomor WhatsApp">
 </div>
 
 <div class="input-group">
@@ -214,7 +204,7 @@ textarea {
 
 <label><b>Pengambilan</b></label>
 <div class="option-group">
-  <button type="button" class="option-btn" onclick="setPengambilan(this,'Ambil di tempat')">✔ Ambil di tempat</button>
+  <button type="button" class="option-btn" onclick="setPengambilan(this,'Ambil di tempat')">📦 Ambil di tempat</button>
   <button type="button" class="option-btn" onclick="setPengambilan(this,'Diantar ke rumah')">🚚 Antar ke rumah</button>
 </div>
 
@@ -223,7 +213,7 @@ textarea {
   <textarea id="alamat" placeholder="Alamat lengkap (jika di antar)"></textarea>
 </div>
 
-<button class="main" onclick="kirimWA()">📲 Pesan Sekarang via WhatsApp</button>
+<button class="main" onclick="kirimWA()">🟢 Pesan Sekarang via WhatsApp</button>
 
 </div>
 </div>
@@ -248,6 +238,7 @@ function togglePotongan() {
     document.getElementById('potongan').value = "";
   }
 }
+
 function kirimWA() {
   var nama = document.getElementById('nama').value;
   var hp = document.getElementById('hp').value;
@@ -260,29 +251,34 @@ function kirimWA() {
   var potongan = document.getElementById('potongan').value;
   var alamat = document.getElementById('alamat').value;
 
+  if (!nama || !hp || !jenis || !jumlah || !hargaSelect.value || !layanan || !pengambilanTerpilih) {
+    alert("Lengkapi dulu semua data!");
+    return;
+  }
+
+  if (pengambilanTerpilih === "Diantar ke rumah" && !alamat) {
+    alert("Isi alamat dulu!");
+    return;
+  }
+
   var pesan =
-`*Halo kaka, Saya mau pesan Ayam..*
+`Halo kak, saya mau pesan ayam:
 
-Nama        : *${nama}*
-WhatsApp: *${hp}*
-Jenis         : *${jenis}*
-Jumlah     : *${jumlah} ekor*
-Harga        : *${hargaText}*
-Layanan   : *${layanan}*
-${potongan ? "Potongan : *" + potongan + "*\n" : ""}Pengambilan: *${pengambilanTerpilih}*
-Alamat     : *${alamat}*`;
-
-  var nomor = "6282278861707";
+👤 Nama: ${nama}
+📱 WA: ${hp}
+🐔 Jenis: ${jenis}
+🔢 Jumlah: ${jumlah} ekor
+💰 Harga: ${hargaText}
+🔪 Layanan: ${layanan}
+${potongan ? "🍗 Potongan: " + potongan + "\n" : ""}📦 Pengambilan: ${pengambilanTerpilih}
+📍 Alamat: ${alamat}`;
 
   window.open(
-    "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan),
+    "https://wa.me/6282278861707?text=" + encodeURIComponent(pesan),
     "_blank"
   );
 }
 </script>
-
-</body>
-</html></script>
 
 </body>
 </html>
