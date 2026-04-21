@@ -266,6 +266,20 @@ button.main {
   <span class="check">✔</span>
 </div>
 
+<div class="input-group">
+  <span>🧾</span>
+  <div id="totalInfo" style="font-weight:bold;font-size:13px;">
+    Total: Rp0
+  </div>
+</div>
+
+<div class="input-group">
+  <span>🚚</span>
+  <div id="ongkirInfo" style="font-weight:bold;font-size:13px;">
+    Ongkir: Rp0
+  </div>
+</div>
+
 <button class="main" onclick="kirimWA()">🟢 Pesan Sekarang via WhatsApp</button>
 
 </div>
@@ -278,6 +292,7 @@ function setPengambilan(el, value) {
   document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
   el.classList.add('active');
   pengambilanTerpilih = value;
+  hitungTotal();
 }
 
 function togglePotongan() {
@@ -358,6 +373,29 @@ document.querySelectorAll('.checkable input, .checkable select, .checkable texta
       }
     }
   });
+});
+  function hitungTotal() {
+  let jumlah = parseInt(document.getElementById('jumlah').value) || 0;
+  let hargaSelect = document.getElementById('harga');
+  let harga = parseInt(hargaSelect.value) || 0;
+
+  let ongkir = 0;
+
+  // aturan ongkir sederhana
+  if (pengambilanTerpilih === "Diantar ke rumah") {
+    ongkir = 10000;
+  }
+
+  let total = (jumlah * harga) + ongkir;
+
+  document.getElementById('totalInfo').innerText = "Total: Rp" + total.toLocaleString('id-ID');
+  document.getElementById('ongkirInfo').innerText = "Ongkir: Rp" + ongkir.toLocaleString('id-ID');
+}
+
+// jalankan otomatis saat input berubah
+document.querySelectorAll('#jumlah, #harga').forEach(el => {
+  el.addEventListener('input', hitungTotal);
+  el.addEventListener('change', hitungTotal);
 });
 </script>
 
