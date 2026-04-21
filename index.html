@@ -336,10 +336,21 @@ document.querySelectorAll('.checkable input, .checkable select, .checkable texta
   el.addEventListener('input', function() {
     let group = this.parentElement;
 
-    if (this.value.trim() !== "") {
-      group.classList.add('filled');
-    } else {
-      group.classList.remove('filled');
+    // khusus nomor WA
+    if (this.id === "hp") {
+      if (this.value.trim().length >= 12) {
+        group.classList.add('filled');
+      } else {
+        group.classList.remove('filled');
+      }
+    } 
+    // input lain tetap normal
+    else {
+      if (this.value.trim() !== "") {
+        group.classList.add('filled');
+      } else {
+        group.classList.remove('filled');
+      }
     }
   });
 });
