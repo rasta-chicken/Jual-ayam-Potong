@@ -398,9 +398,8 @@ function kirimWA() {
   }
 
   var pesan =
-`Halo kak, saya mau pesan ayam:
+`*Halo kak, saya mau pesan ayam...:*
 
-\`\`\`
 👤 Nama   : *${nama}*
 📱 WA       : *${hp}*
 🐔 Jenis   : *${jenis}*
@@ -409,7 +408,7 @@ function kirimWA() {
 🔪 Layanan: *${layanan}*
 ${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}📦 Pengambilan: *${pengambilanTerpilih}*
 📍 Alamat: *${alamat}*
-💰 Total Bayar: *${totalBayar.replace("Total Bayar: ","")}*\`\`\``;
+💰 Total Bayar: *${totalBayar.replace("Total Bayar: ","")}*`;
 
   window.open(
     "https://wa.me/6282278861707?text=" + encodeURIComponent(pesan),
