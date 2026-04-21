@@ -380,6 +380,7 @@ function kirimWA() {
   var layanan = document.getElementById('layanan').value;
   var potongan = document.getElementById('potongan').value;
   var alamat = document.getElementById('alamat').value;
+  var totalBayar = document.getElementById('totalBayar').value;
 
   if (!nama || !hp || !jenis || !jumlah || !hargaSelect.value || !layanan || !pengambilanTerpilih) {
     alert("Lengkapi dulu semua data!");
@@ -399,14 +400,15 @@ function kirimWA() {
   var pesan =
 `Halo kak, saya mau pesan ayam:
 
-👤 Nama: *${nama}*
-📱 WA: *${hp}*
-🐔 Jenis: *${jenis}*
+👤 Nama   : *${nama}*
+📱 WA     : *${hp}*
+🐔 Jenis : *${jenis}*
 🔢 Jumlah: *${jumlah}* ekor
-💰 Harga: *${hargaText}*
+💰 Harga  : *${hargaText}*
 🔪 Layanan: *${layanan}*
 ${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}📦 Pengambilan: *${pengambilanTerpilih}*
 📍 Alamat: *${alamat}*`;
+💰 Total Bayar: *${totalBayar}*
 
   window.open(
     "https://wa.me/6282278861707?text=" + encodeURIComponent(pesan),
