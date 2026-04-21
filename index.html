@@ -163,7 +163,12 @@ button.main {
 .input-group input {
   padding-right: 30px;
 }
-</style>
+  
+#totalBayar {
+  color: #2e7d32;
+  font-weight: bold;
+}
+<style>
 </head>
 
 <body>
@@ -322,13 +327,13 @@ function hitungTotal() {
   let totalBayar = totalHarga + ongkir;
 
   document.getElementById('totalHarga').value =
-    totalHarga ? "Rp " + totalHarga.toLocaleString() : "";
+  totalHarga ? "Total Harga: Rp " + totalHarga.toLocaleString() : "";
 
-  document.getElementById('ongkir').value =
-    "Rp " + ongkir.toLocaleString();
+document.getElementById('ongkir').value =
+  "Ongkir: Rp " + ongkir.toLocaleString();
 
-  document.getElementById('totalBayar').value =
-    totalBayar ? "Rp " + totalBayar.toLocaleString() : "";
+document.getElementById('totalBayar').value =
+  totalBayar ? "Total Bayar: Rp " + totalBayar.toLocaleString() : "";
 }
 
 /* ========== EVENT LISTENER ========== */
