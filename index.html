@@ -169,6 +169,44 @@ button.main {
   font-weight: bold !important;
   font-size: 20px;
 }
+
+.wa-btn-pro {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 16px;
+  border: none;
+
+  background: #1f7a3a; /* hijau tua profesional */
+  color: white;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: 0.2s ease;
+}
+
+.wa-btn-pro:hover {
+  background: #16602d;
+}
+
+.wa-btn-pro:active {
+  transform: scale(0.98);
+}
+
+.wa-icon-pro {
+  width: 22px;
+  height: 22px;
+}
+
 </style>
 </head>
 
@@ -287,7 +325,10 @@ button.main {
   <input type="text" id="totalBayar" placeholder="Total Bayar" readonly>
 </div>
   
-<button class="main" onclick="kirimWA()">🟢 Pesan Sekarang via WhatsApp</button>
+<button class="wa-btn-pro" onclick="kirimWA()">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="wa-icon-pro">
+  <span>Pesan Sekarang via WhatsApp</span>
+</button>
 
 </div>
 </div>
