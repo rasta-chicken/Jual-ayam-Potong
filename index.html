@@ -457,6 +457,8 @@ function kirimWA() {
 🔪 Layanan: *${layanan}*
 ${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}📦 Pengambilan: *${pengambilanTerpilih}*
 ${pengambilanTerpilih === "Diantar ke rumah" ? "📍 Alamat: *" + alamat + "*\n" : ""}💰 Total Bayar: *${totalBayar.replace("Total Bayar: ","")}*`;
+
+  document.querySelector('.wa-btn-pro span').innerText = "Memproses...";
   
   window.open(
     "https://wa.me/6282278861707?text=" + encodeURIComponent(pesan),
