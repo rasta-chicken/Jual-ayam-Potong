@@ -379,7 +379,9 @@ document.querySelectorAll('#harga, #jumlah').forEach(el => {
   el.addEventListener('input', hitungTotal);
   el.addEventListener('change', hitungTotal);
 });
-
+  
+document.getElementById('layanan').addEventListener('change', hitungTotal);
+  
 /* ========== VALIDASI CEKLIST ========== */
 document.querySelectorAll('.checkable input, .checkable select, .checkable textarea')
 .forEach(el => {
