@@ -339,6 +339,13 @@ function setPengambilan(el, value) {
   el.classList.add('active');
   pengambilanTerpilih = value;
 
+if (pengambilanTerpilih === "Diantar ke rumah") {
+  document.getElementById('alamat').disabled = false;
+} else {
+  document.getElementById('alamat').disabled = true;
+  document.getElementById('alamat').value = "";
+}
+  
   hitungTotal();
 }
 
