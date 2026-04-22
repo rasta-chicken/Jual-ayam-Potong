@@ -331,27 +331,36 @@ function setPengambilan(el, value) {
   el.classList.add('active');
   pengambilanTerpilih = value;
 
-if (pengambilanTerpilih === "Diantar ke rumah") {
-  document.getElementById('alamat').disabled = false;
-} else {
-  document.getElementById('alamat').disabled = true;
-  document.getElementById('alamat').value = "";
-}
-  
+  const alamatGroup = document.getElementById('alamat-group');
+  const alamat = document.getElementById('alamat');
+
+  if (value === "Diantar ke rumah") {
+    alamatGroup.style.display = "flex"; // tampil
+  } else {
+    alamatGroup.style.display = "none"; // sembunyi
+    alamat.value = "";
+  }
+
   hitungTotal();
 }
 
 /* ========== TOGGLE POTONGAN ========== */
-function togglePotongan() {
-  var layanan = document.getElementById('layanan').value;
-  var potonganGroup = document.getElementById('potongan-group');
+function setPengambilan(el, value) {
+  document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
+  el.classList.add('active');
+  pengambilanTerpilih = value;
 
-  if (layanan.includes('Potong')) {
-    potonganGroup.style.display = 'flex';
+  const alamatGroup = document.getElementById('alamat-group');
+  const alamat = document.getElementById('alamat');
+
+  if (value === "Diantar ke rumah") {
+    alamatGroup.style.display = "flex"; // tampil
   } else {
-    potonganGroup.style.display = 'none';
-    document.getElementById('potongan').value = "";
+    alamatGroup.style.display = "none"; // sembunyi
+    alamat.value = "";
   }
+
+  hitungTotal();
 }
 
 /* ========== HITUNG TOTAL ========== */
