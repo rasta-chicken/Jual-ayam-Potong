@@ -427,6 +427,12 @@ function kirimWA() {
     alert("Lengkapi dulu semua data!");
     return;
   }
+
+  // WAJIB pilih potongan jika pilih layanan potong
+if (layanan === "Bersihkan Bulu + Potong" && !potongan) {
+  alert("Pilih jumlah potongan dulu!");
+  return;
+}
   
   if (jumlah <= 0) {
   alert("Jumlah harus lebih dari 0!");
