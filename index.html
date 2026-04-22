@@ -155,7 +155,7 @@ button.main {
 #totalBayar {
   color: #d32f2f !important;
   font-weight: bold !important;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .wa-btn-pro {
@@ -254,6 +254,7 @@ button.main {
     <option value="80000" disabled>Rp80rb (1.7-1.8 kg) ❌Stok Habis</option>
     <option value="90000" disabled>Rp90rb (1.9-2.0 kg) ❌Stok Habis</option> 
     <option value="95000">Rp95rb (2.1-2.2 kg) ✅Ready</option>
+    <option value="100000">Rp100rb (2.3-2.5 kg) ✅Ready</option>
   </select>
   <span class="check">✔</span>
 </div>
@@ -414,6 +415,18 @@ document.querySelectorAll('.checkable input, .checkable select, .checkable texta
 
 /* ========== PANGGIL AWAL ========== */
 hitungTotal();
+  
+  function togglePotongan() {
+  const layanan = document.getElementById('layanan').value;
+  const potonganGroup = document.getElementById('potongan-group');
+
+  if (layanan === "Bersihkan Bulu + Potong") {
+    potonganGroup.style.display = "flex";
+  } else {
+    potonganGroup.style.display = "none";
+    document.getElementById('potongan').value = "";
+  }
+}
 
 /* ========== KIRIM WA ========== */
 function kirimWA() {
