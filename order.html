@@ -11,7 +11,8 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  background: #d6d6d6;
+  padding-bottom: 90px;
 }
 
 /* MENU GARIS 3 */
@@ -87,11 +88,11 @@ header p { margin: 5px 0 0; font-size: 14px; }
 }
 
 .card {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(5px);
-  padding: 15px;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  background: transparent;
+  backdrop-filter: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .info {
@@ -218,20 +219,14 @@ button.main {
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   padding: 14px 16px;
   border: none;
-
   background: #1f7a3a; /* hijau tua profesional */
   color: white;
-
   font-size: 15px;
   font-weight: bold;
-
   border-radius: 10px;
-
   cursor: pointer;
-
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   transition: 0.2s ease;
 }
@@ -256,6 +251,38 @@ button.main {
   font-weight: bold;
 }
   
+.wa-btn-fixed {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border: none;
+  background: #1f7a3a;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+  
+body::after{
+  content:"";
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:85px;
+  background:#d6d6d6;
+  z-index:9998;
+  border-top:1px solid #a6a6a6;
+}  
 </style>
 </head>
 
@@ -281,7 +308,7 @@ button.main {
 <div class="container">
 <div class="card">
 
-  <h2 class="judul-form" style="color: #3e9e42">FORM PEMESANAN</h2>
+  <h2 class="judul-form" style="color: #49894c">FORM PEMESANAN</h2>
 
 <div class="input-group checkable">
   <span>👤</span>
@@ -382,7 +409,7 @@ button.main {
   <input type="text" id="totalBayar" placeholder="Total Bayar" readonly>
 </div>
   
-<button class="wa-btn-pro" onclick="kirimWA()">
+<button class="wa-btn-fixed" onclick="kirimWA()">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="wa-icon-pro">
   <span>Pesan Sekarang via WhatsApp</span>
 </button>
