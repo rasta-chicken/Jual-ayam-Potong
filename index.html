@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RASTA Chicken</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background:#eaeaea;
+}
+
+.container {
+  max-width:480px;
+  margin:auto;
+  background:#fff;
+  overflow:hidden;
+}
+
+/* MENU GARIS 3 */
+.menu-toggle {
+  position:fixed;
+  top:15px;
+  left:15px;
+  font-size:25px;
+  color:white;
+  cursor:pointer;
+  z-index:1000;
+}
+
+/* SIDEBAR COMPACT */
+.sidebar {
+  position:fixed;
+  top:60px;
+  left:15px;
+  width:200px;
+  background:#111;
+  border-radius:10px;
+  overflow:hidden;
+  transform: scale(0);
+  transform-origin: top left;
+  transition:0.2s ease;
+  z-index:999;
+}
+
+.sidebar.active {
+  transform: scale(1);
+}
+
+.sidebar a {
+  display:block;
+  color:white;
+  padding:12px;
+  text-decoration:none;
+  border-bottom:1px solid #333;
+  font-size:14px;
+}
+
+.sidebar a:hover {
+  background:#0a8f3c;
+}
+
+/* TOMBOL BACK / TUTUP di garis 3 */
+.close-btn {
+  display:block;
+  text-align:right;
+  padding:10px;
+  cursor:pointer;
+  background:#000;
+  color:white;
+  font-size:14px;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg,#0a8f3c,#6bd12a);
+  color:white;
+  padding:30px 20px;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 75%,
+    85% 100%,
+    0 100%
+  );
+}
+
+.header h1 {
+  font-size:40px;
+  font-weight:bold;
+  color:yellow;
+  text-align: center;
+}
+
+.header span {
+  color:white;
+}
+
+.header p {
+  font-size:18px;
+  margin-top:5px;
+  text-align: center;
+}
+
+/* GAMBAR */
+.hero img {
+  width:100%;
+  margin-top:-40px;
+}
+
+/* SECTION */
+.section {
+  margin-top:-40px;
+  padding:20px;
+  background:#0a8f3c;
+  color:white;
+  clip-path: polygon(
+    0 20%,
+    15% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.section h2 {
+  margin-bottom:10px;
+  text-align: center;
+}
+
+.section ul {
+  font-size:14px;
+  line-height:1.6;
+}
+  
+.section span {
+  color:red;
+  font-weight:bold;
+  font-size:18px;
+  -webkit-text-stroke: 0.5px white;
+}
+
+/* GALERI */
+.gallery {
+  display:flex;
+  gap:10px;
+  padding:15px;
+}
+
+.gallery img {
+  width:30%;
+}
+
+/* CONTACT */
+.contact {
+  background:#111;
+  color:white;
+  padding:15px;
+  font-size:14px;
+}
+
+/* TOMBOL PESAN */
+.btn-wa {
+  position:fixed;
+  bottom:50px;
+  right:20px;
+  background:#25D366;
+  color:red;
+  padding:8px;
+  border-radius:50%;
+  font-size:15px;
+  font-weight:bold;
+  text-align:center;
+  text-decoration:none;
+  box-shadow:0 5px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 0 #1da851;
+  transition: all 0.1s ease;
+}
+
+.btn-wa:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #1da851;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<div class="sidebar" id="menu">
+  <div class="close-btn" onclick="toggleMenu()">✖</div>
+  <a href="index.html">Beranda</a>
+  <a href="tentang.html">Tentang</a>
+  <a href="galeri.html">Galeri</a>
+  <a href="kontak.html">Kontak</a>
+  <a href="order.html">Pesan Sekarang</a>
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header" id="header">
+    <h1>RASTA <span>Chicken</span></h1><br>
+    <p>Ayam Broiler Segar Berkualitas</p>
+  </div>
+
+  <!-- GAMBAR -->
+  <div class="hero">
+    <img src="foto.jpg">
+  </div>
+
+  <!-- INFO -->
+  <div class="section" id="info">
+    <h2>RASTA Chicken</h2>
+    <ul>
+      <li>✔ Ayam sehat & segar langsung dari kandang</li>
+      <li>✔ Potong & Bersih bulu <span>GRATIS..!</span></li>
+      <li>✔ Potong Cepat & Bersih (rapi & higienis)</li>
+      <li>✔ Bisa potong sesuai permintaan</li>
+    </ul>
+  </div>
+
+  <!-- GALERI -->
+  <div class="gallery" id="galeri">
+    <img src="https://images.unsplash.com/photo-1604908554007-21d6b9c4fcd4">
+    <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a">
+    <img src="https://images.unsplash.com/photo-1585238342028-4c2c9b9b6e3f">
+  </div>
+
+  <!-- KONTAK -->
+  <div class="contact" id="kontak">
+    📞 0815 2925 9407 <br>
+    📍 Desa Besmarak - Nekamese - Kab. Kupang
+  </div>
+
+</div>
+
+<a href="order.html" class="btn-wa">PESAN<br>SEKARANG</a>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
