@@ -178,6 +178,7 @@ body {
   box-shadow:0 5px 10px rgba(0,0,0,0.3);
   box-shadow: 0 6px 0 #1da851;
   transition: all 0.1s ease;
+  cursor:grab;
 }
 
 .btn-wa:active {
@@ -240,12 +241,60 @@ body {
 
 </div>
 
-<a href="order.html" class="btn-wa">PESAN<br>SEKARANG</a>
+<a href="order.html" class="btn-wa" id="dragBtn">PESAN<br>SEKARANG</a>
 
 <script>
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
 }
+  
+/* AGAR TOMBOL PESAN BISA DI GESER2 */
+const btn = document.getElementById("dragBtn");
+
+let isDragging = false;
+let offsetX, offsetY;
+
+btn.addEventListener("touchstart", startDrag);
+btn.addEventListener("mousedown", startDrag);
+
+function startDrag(e) {
+  isDragging = true;
+  const t = e.touches ? e.touches[0] : e;
+  offsetX = t.clientX - btn.offsetLeft;
+  offsetY = t.clientY - btn.offsetTop;
+}
+
+document.addEventListener("touchmove", drag);
+document.addEventListener("mousemove", drag);
+
+function drag(e) {
+  if (!isDragging) return;
+  const t = e.touches ? e.touches[0] : e;
+
+  btn.style.left = (t.clientX - offsetX) + "px";
+  btn.style.top = (t.clientY - offsetY) + "px";
+  btn.style.right = "auto";
+  btn.style.bottom = "auto";
+}
+
+document.addEventListener("touchend", snapToSide);
+document.addEventListener("mouseup", snapToSide);
+
+function snapToSide() {
+  if (!isDragging) return;
+  isDragging = false;
+
+  const screenWidth = window.innerWidth;
+  const btnRect = btn.getBoundingClientRect();
+  const btnCenter = btnRect.left + btnRect.width / 2;
+
+  // kalau di kiri layar
+  if (btnCenter < screenWidth / 2) {
+    btn.style.left = "10px";
+  } else {
+    btn.style.left = (screenWidth - btnRect.width - 10) + "px";
+  }
+}  
 </script>
 
 </body>
