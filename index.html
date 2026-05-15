@@ -14,7 +14,8 @@ body {
 }
 
 .container {
-  max-width:480px;
+  width:100%;
+  max-width:1200px; /* biar lebar di laptop */
   margin:auto;
   background:#fff;
   overflow:hidden;
@@ -26,7 +27,7 @@ body {
   top:15px;
   left:15px;
   font-size:25px;
-  color:white;
+  color:#000;
   cursor:pointer;
   z-index:1000;
 }
@@ -88,8 +89,10 @@ body {
   );
 }
 
+/* RESPONSIVE */
+@media (max-width:768px) {  
 .header h1 {
-  font-size:40px;
+  font-size:28px;
   font-weight:bold;
   color:yellow;
   text-align: center;
@@ -103,6 +106,7 @@ body {
   font-size:18px;
   margin-top:5px;
   text-align: center;
+  font-size:14px;
 }
 
 /* GAMBAR */
@@ -150,8 +154,12 @@ body {
   padding:15px;
 }
 
+  .gallery {
+    flex-direction:column;
+  }
+
 .gallery img {
-  width:30%;
+  width:100%;
 }
 
 /* CONTACT */
