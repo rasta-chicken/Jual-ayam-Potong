@@ -624,13 +624,13 @@
         var pesan = `*Halo kak, saya mau pesan ayam...*
 
 👤 Nama   : *${nama}*
-📱 WA       : *${hp}*
-🐔 Jenis   : *${jenis}*
-🔢 Jumlah: *${jumlah}* ekor
-💰 Harga   : *${hargaText}*
-🔪 Layanan: *${layanan}*
+📱 WA        : *${hp}*
+🐔 Jenis     : *${jenis}*
+🔢 Jumlah : *${jumlah}* ekor
+💰 Harga    : *${hargaText}*
+🔪 Layanan : *${layanan}*
 ${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}📦 Pengambilan: *${pengambilanTerpilih}*
-${pengambilanTerpilih === "Diantar ke rumah" ? "📍 Alamat: *" + alamat + "*\n" : ""}💰 Total Bayar: *${totalBayar.replace("Total Bayar: ", "")}*`;
+${pengambilanTerpilih === "Diantar ke rumah" ? "📍 Alamat  : *" + alamat + "*\n" : ""}💰 Total Bayar: *${totalBayar.replace("Total Bayar: ", "")}*`;
 
         window.open("https://wa.me/6282278861707?text=" + encodeURIComponent(pesan), "_blank");
       }
