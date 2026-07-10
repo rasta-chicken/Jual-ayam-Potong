@@ -309,7 +309,7 @@
 
     <header>
       <h1>RASTA Chicken</h1>
-      <p>Ayam Segar | Potong Gratis | Bersih Gratis</p>
+      <p>Ayam Hidup | Ayam Beku | Berkualitas</p>
     </header>
 
     <div class="container">
@@ -348,25 +348,15 @@
           <span>💰</span>
           <select id="harga" disabled>
             <option value="">Pilih Harga</option>
-            <option value="50000">Rp50.000 rb (0.8-1.0 kg) ✅Ready</option>
-            <option value="55000" disabled>Rp55.000 rb (1.0-1.2 kg) ❌Stok Habis</option>
-            <option value="65000" disabled>Rp65.000 rb (1.3-1.4 kg) ❌Stok Habis</option>
-            <option value="75000" disabled>Rp75.000 rb (1.5-1.6 kg) ❌Stok Habis</option>
-            <option value="80000" disabled>Rp80.000 rb (1.7-1.8 kg) ❌Stok Habis</option>
-            <option value="90000" disabled>Rp90.000 rb (1.9-2.0 kg) ❌Stok Habis</option>
-            <option value="95000" disabled>Rp95.000 rb (2.1-2.2 kg) ❌Stok Habis</option>
-            <option value="100000" disabled>Rp100.000 rb (2.3-2.5 kg) ❌Stok Habis</option>
           </select>
           <span class="check">✔</span>
         </div>
 
         <div class="input-group checkable">
           <span>🔪</span>
-          <select id="layanan" onchange="togglePotongan()" disabled>
+          <select id="layanan" disabled>
             <option value="">Pilih Layanan</option>
-            <option>Biarkan hidup</option>
-            <option>Bersih Bulu Saja</option>
-            <option>Bersihkan Bulu + Potong</option>
+          </select>
           </select>
           <span class="check">✔</span>
         </div>
@@ -397,6 +387,25 @@
             🚚 Antar ke rumah
           </button>
         </div>
+        
+        <div class="input-group checkable" id="wilayah-group" style="display:none;">
+          <span>🗺️</span>
+          <select id="wilayah" onchange="hitungTotal()">
+          <option value="">Pilih Wilayah</option>
+          <option value="0">Desa Besmarak (Gratis)</option>
+          <option value="5000">Oben</option>
+          <option value="5000">Noesinas</option>
+          <option value="7000">Belo</option>
+          <option value="10000">BTN-Kolhua</option>
+          <option value="5000">Oemasin</option>
+          <option value="5000">Oeletsala</option>
+          <option value="7000">Kuaklalo</option>
+          <option value="10000">Baumata</option>
+          <option value="15000">Penfui</option>
+          <option value="15000">Kupang Kota</option>
+          </select>
+          <span class="check">✔</span>
+        </div>
 
         <div class="input-group checkable" id="alamat-group" style="display: none">
           <span>📍</span>
@@ -421,7 +430,7 @@
 
         <button class="wa-btn-fixed" onclick="kirimWA()">
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="wa-icon-pro" />
-          <span>Pesan Sekarang via WhatsApp</span>
+          <span>Pesan Sekarang (via WhatsApp)</span>
         </button>
       </div>
     </div>
@@ -431,7 +440,6 @@
         document.getElementById("menu").classList.toggle("active");
       }
       let pengambilanTerpilih = "";
-      const ONGKIR = 5000;
 
       /* ========== PENGAMBILAN ========== */
       function setPengambilan(el, value) {
@@ -441,12 +449,21 @@
 
         const alamatGroup = document.getElementById("alamat-group");
         const alamat = document.getElementById("alamat");
+        const wilayahGroup = document.getElementById("wilayah-group");
+        const wilayah = document.getElementById("wilayah");
 
         if (value === "Diantar ke rumah") {
-          alamatGroup.style.display = "flex"; // tampil
+
+          alamatGroup.style.display = "flex";
+          wilayahGroup.style.display = "flex";
+
         } else {
-          alamatGroup.style.display = "none"; // sembunyi
+
+          alamatGroup.style.display = "none";
+          wilayahGroup.style.display = "none";
+
           alamat.value = "";
+          wilayah.value = "";
         }
 
         hitungTotal();
@@ -458,7 +475,11 @@
         let jumlah = parseInt(document.getElementById("jumlah").value) || 0;
 
         let totalHarga = harga * jumlah;
-        let ongkir = pengambilanTerpilih === "Diantar ke rumah" ? ONGKIR : 0;
+        let ongkir = 0;
+
+        if (pengambilanTerpilih === "Diantar ke rumah") {
+          ongkir = parseInt(document.getElementById("wilayah").value) || 0;
+        }
         let totalBayar = totalHarga + ongkir;
 
         document.getElementById("totalHarga").value = "Total Harga: Rp " + totalHarga.toLocaleString();
@@ -540,38 +561,47 @@
         if (jenis === "hidup") {
           harga.innerHTML = `
     <option value="">Pilih Harga</option>
-    <option value="50000">Rp50.000 rb - (0.8-1.0 kg) ✅Ready</option>
-    <option value="55000" disabled>Rp55.000 rb - (1.0-1.2 kg) ❌Stok Habis</option>
-    <option value="65000" disabled>Rp65.000 rb - (1.3-1.4 kg) ❌Stok Habis</option>
-    <option value="75000" disabled>Rp75.000 rb - (1.5-1.6 kg) ❌Stok Habis</option>
-    <option value="80000" disabled>Rp80.000 rb - (1.7-1.8 kg) ❌Stok Habis</option>
-    <option value="90000" disabled>Rp90.000 rb - (1.9-2.0 kg) ❌Stok Habis</option> 
-    <option value="95000" disabled>Rp95.000 rb - (2.1-2.2 kg) ❌Stok Habis</option>
-    <option value="100000" disabled>Rp100.000 rb - (2.3-2.5 kg) ❌Stok Habis</option>
+    <option value="50000">Rp50.000 - (0.8-1.0 kg) ✅Ready</option>
+    <option value="55000" disabled>Rp55.000 - (1.0-1.2 kg) ❌Stok Habis</option>
+    <option value="65000" disabled>Rp65.000 - (1.3-1.4 kg) ❌Stok Habis</option>
+    <option value="75000" disabled>Rp75.000 - (1.5-1.6 kg) ❌Stok Habis</option>
+    <option value="80000" disabled>Rp80.000 - (1.7-1.8 kg) ❌Stok Habis</option>
+    <option value="90000" disabled>Rp90.000 - (1.9-2.0 kg) ❌Stok Habis</option> 
+    <option value="95000" disabled>Rp95.000 - (2.1-2.2 kg) ❌Stok Habis</option>
+    <option value="100000" disabled>Rp100.000 - (2.3-2.5 kg) ❌Stok Habis</option>
     `;
 
           layanan.innerHTML = `
     <option value="">Pilih Layanan</option>
-    <option>Biarkan Hidup</option>
+    <option>Tidak Dipotong</option>
     <option>Bersih Bulu Saja</option>
     <option>Bersihkan Bulu + Potong</option>
     `;
         } else if (jenis === "beku") {
           harga.innerHTML = `
       <option value="">Pilih Harga / Berat</option>
-      <option value="100000" disabled>0.6 kg - 3 Ekor Rp.100.000 rb❌Stok Habis</option>
-      <option value="35000" disabled>0.6 kg - Rp.35.000 rb❌Stok Habis</option>
-      <option value="40000" disabled>0.7 kg - Rp.40.000 rb❌Stok Habis</option>
-      <option value="45000">0.8 kg - Rp.45.000 rb ✅Ready</option>
-      <option value="50000" disabled>0.9 kg - Rp.50.000 rb ❌Stok Habis</option>
-      <option value="55000" disabled>1.0 kg - Rp.55.000 rb ❌Stok Habis</option>
+      <option value="100000" disabled>0.6 kg - 3 Ekor Rp.100.000 ❌Stok Habis</option>
+      <option value="35000" disabled>0.6 kg - Rp.35.000 ❌Stok Habis</option>
+      <option value="40000" disabled>0.7 kg - Rp.40.000 ❌Stok Habis</option>
+      <option value="45000">0.8 kg - Rp.45.000 ✅Ready</option>
+      <option value="50000" disabled>0.9 kg - Rp.50.000 ❌Stok Habis</option>
+      <option value="55000" disabled>1.0 kg - Rp.55.000 ❌Stok Habis</option>
     `;
 
-          layanan.innerHTML = `
-      <option value="">Pilih Layanan</option>
-      <option>Tidak dipotong</option>
-      <option>Potong Sesuai Standar</option>
-    `;
+    layanan.innerHTML = `
+    <option value="">Pilih Layanan Potong</option>
+    <option>Utuh </option>
+    <option>4 Potong /ekor  </option>
+    <option>6 Potong /ekor</option>
+    <option>8 Potong /ekor</option>
+    <option>10 Potong /ekor</option>
+    <option>12 Potong /ekor</option>
+    <option>14 Potong /ekor</option>
+    <option>16 Potong /ekor</option>
+    <option>18 Potong /ekor</option>
+    <option>20 Potong /ekor</option>
+    <option>22 Potong /ekor</option>
+`;
         }
 
         document.getElementById("potongan-group").style.display = "none";
@@ -593,6 +623,9 @@
         var layanan = document.getElementById("layanan").value;
         var potongan = document.getElementById("potongan").value;
         var alamat = document.getElementById("alamat").value;
+        var wilayah = document.getElementById("wilayah").options[
+          document.getElementById("wilayah").selectedIndex].text;
+        
         var totalBayar = document.getElementById("totalBayar").value;
 
         if (!nama || !hp || !jenis || !jumlah || !hargaSelect.value || !layanan || !pengambilanTerpilih) {
@@ -611,9 +644,17 @@
           return;
         }
 
-        if (pengambilanTerpilih === "Diantar ke rumah" && !alamat) {
-          alert("Isi alamat dulu!");
-          return;
+        if (pengambilanTerpilih === "Diantar ke rumah") {
+
+          if (document.getElementById("wilayah").value === "") {
+            alert("Pilih wilayah pengiriman!");
+            return;
+          }
+
+          if (!alamat) {
+            alert("Isi alamat dulu!");
+            return;
+          }
         }
 
         if (!/^(08|628|\+628)\d{8,11}$/.test(hp)) {
@@ -624,13 +665,17 @@
         var pesan = `*Halo kak, saya mau pesan ayam...*
 
 👤 Nama   : *${nama}*
-📱 WA        : *${hp}*
-🐔 Jenis     : *${jenis}*
-🔢 Jumlah : *${jumlah}* ekor
-💰 Harga    : *${hargaText}*
-🔪 Layanan : *${layanan}*
-${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}📦 Pengambilan: *${pengambilanTerpilih}*
-${pengambilanTerpilih === "Diantar ke rumah" ? "📍 Alamat  : *" + alamat + "*\n" : ""}💰 Total Bayar: *${totalBayar.replace("Total Bayar: ", "")}*`;
+📱 WA       : *${hp}*
+🐔 Jenis   : *${jenis}*
+🔢 Jumlah: *${jumlah}* ekor
+💰 Harga   : *${hargaText}*
+🔪 Layanan: *${layanan}*
+${potongan ? "🍗 Potongan: *" + potongan + "*\n" : ""}
+📦 Pengambilan: *${pengambilanTerpilih}*
+${pengambilanTerpilih === "Diantar ke rumah"
+? "🗺️ Wilayah : *" + wilayah + "*\n📍 Alamat : *" + alamat + "*\n"
+: ""}
+💰 Total Bayar: *${totalBayar.replace("Total Bayar: ", "")}*`;
 
         window.open("https://wa.me/6282278861707?text=" + encodeURIComponent(pesan), "_blank");
       }
