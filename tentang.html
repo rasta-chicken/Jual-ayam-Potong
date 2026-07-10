@@ -1,277 +1,342 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tentang - RASTA Chicken</title>
-<style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang - RASTA Chicken</title>
+    <style>
+      /* MENU GARIS 3 */
+      .menu-toggle {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        font-size: 25px;
+        color: #000;
+        cursor: pointer;
+        z-index: 1000;
+      }
 
-/* MENU GARIS 3 */
-.menu-toggle {
-  position:fixed;
-  top:15px;
-  left:15px;
-  font-size:25px;
-  color:#000;
-  cursor:pointer;
-  z-index:1000;
-}
+      /* SIDEBAR COMPACT */
+      .sidebar {
+        position: fixed;
+        top: 60px;
+        left: 15px;
+        width: 200px;
+        background: #111;
+        border-radius: 10px;
+        overflow: hidden;
+        transform: scale(0);
+        transform-origin: top left;
+        transition: 0.2s ease;
+        z-index: 999;
+      }
 
-/* SIDEBAR COMPACT */
-.sidebar {
-  position:fixed;
-  top:60px;
-  left:15px;
-  width:200px;
-  background:#111;
-  border-radius:10px;
-  overflow:hidden;
-  transform: scale(0);
-  transform-origin: top left;
-  transition:0.2s ease;
-  z-index:999;
-}
+      .sidebar.active {
+        transform: scale(1);
+      }
 
-.sidebar.active {
-  transform: scale(1);
-}
+      .sidebar a {
+        display: block;
+        color: white;
+        padding: 12px;
+        text-decoration: none;
+        border-bottom: 1px solid #333;
+        font-size: 14px;
+      }
 
-.sidebar a {
-  display:block;
-  color:white;
-  padding:12px;
-  text-decoration:none;
-  border-bottom:1px solid #333;
-  font-size:14px;
-}
+      .sidebar a:hover {
+        background: #0a8f3c;
+      }
 
-.sidebar a:hover {
-  background:#0a8f3c;
-}
+      /* TOMBOL BACK / TUTUP */
+      .close-btn {
+        display: block;
+        text-align: right;
+        padding: 10px;
+        cursor: pointer;
+        background: #000;
+        color: white;
+        font-size: 14px;
+      }
 
-/* TOMBOL BACK / TUTUP */
-.close-btn {
-  display:block;
-  text-align:right;
-  padding:10px;
-  cursor:pointer;
-  background:#000;
-  color:white;
-  font-size:14px;
-}
-    
-/* GARIS BATAS ATAS */
-.topbar {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:50px;
-  background:#ffffff;
-  border-bottom:2px solid #ccc;
-  z-index:999;
-}
+      /* GARIS BATAS ATAS */
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: #ffffff;
+        border-bottom: 2px solid #ccc;
+        z-index: 999;
+      }
 
-/* tombol menu tetap di atas */
-.menu-toggle {
-  position:fixed;
-  top:10px;
-  left:15px;
-  z-index:1000;
-}
+      /* tombol menu tetap di atas */
+      .menu-toggle {
+        position: fixed;
+        top: 10px;
+        left: 15px;
+        z-index: 1000;
+      }
 
-/* isi turun supaya tidak ketutup */
-body {
-  padding-top:60px;
-}    
-    
-body {
-  font-family: Arial;
-  padding:20px;
-  padding-top:60px; /* biar tidak ketutup tombol */
-}
+      /* isi turun supaya tidak ketutup */
+      body {
+        padding-top: 60px;
+      }
 
-h2 {
-  margin-bottom:10px;
-}
+      body {
+        font-family: Arial;
+        padding: 20px;
+        padding-top: 60px; /* biar tidak ketutup tombol */
+      }
 
-p {
-  line-height:1.6;
-}
-    
-/* TOMBOL WA */
-.btn-wa {
-  position:fixed;
-  bottom:50px;
-  font-weight:bold;
-  right:20px;
-  background:#25D366;
-  color:red;
-  padding:8px;
-  border-radius:50%;
-  font-size:15px;
-  text-align:center;
-  text-decoration:none;
-  box-shadow:0 5px 10px rgba(0,0,0,0.3);
-  box-shadow: 0 6px 0 #1da851;
-  transition: all 0.1s ease;
-  cursor:grab;
-}
+      h2 {
+        margin-bottom: 10px;
+      }
 
-.btn-wa:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 #1da851;
-}
-    
-/* TOMBOL kembali */    
-.btn-back {
-  position:fixed;
-  bottom:20px;
-  left:15px;
-  color:purple;            /* warna ungu */
-  text-decoration:underline; /* garis bawah */
-  font-size:14px;
-  background:none;
-  padding:0;
-  z-index:1000;
-}
-    
-/* GARIS BATAS BAWAH */     
-.back-wrapper {
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#fff;
-  border-top:2px solid #ccc; /* garis pembatas */
-  padding:20px 15px;
-  z-index:999;
-}
+      p {
+        line-height: 1.6;
+      }
 
-/* WARNA TOMBOL kembali */     
-.btn-back {
-  color:purple;
-  text-decoration:underline;
-  font-size:14px;
-}    
-</style>
-</head>
-    
-<body>
-    
-<div class="topbar"></div>
-    
-<!-- MENU -->
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      /* TOMBOL WA */
+      .btn-wa {
+        position: fixed;
+        bottom: 50px;
+        font-weight: bold;
+        right: 20px;
+        background: #25d366;
+        color: red;
+        padding: 8px;
+        border-radius: 50%;
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 6px 0 #1da851;
+        transition: all 0.1s ease;
+        cursor: grab;
+      }
 
-<div class="sidebar" id="menu">
-  <div class="close-btn" onclick="toggleMenu()">✖</div>
-  <a href="index.html">Beranda</a>
-  <a href="tentang.html">Tentang</a>
-  <a href="galeri.html">Galeri</a>
-  <a href="kontak.html">Kontak</a>
-  <a href="order.html">Pesan Sekarang</a>
+      .btn-wa:active {
+        transform: translateY(4px);
+        box-shadow: 0 2px 0 #1da851;
+      }
+
+      /* TOMBOL kembali */
+      .btn-back {
+        position: fixed;
+        bottom: 20px;
+        left: 15px;
+        color: purple; /* warna ungu */
+        text-decoration: underline; /* garis bawah */
+        font-size: 14px;
+        background: none;
+        padding: 0;
+        z-index: 1000;
+      }
+
+      /* GARIS BATAS BAWAH */
+      .back-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 2px solid #ccc; /* garis pembatas */
+        padding: 20px 15px;
+        z-index: 999;
+      }
+
+      /* WARNA TOMBOL kembali */
+      .btn-back {
+        color: purple;
+        text-decoration: underline;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar"></div>
+
+    <!-- MENU -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="sidebar" id="menu">
+      <div class="close-btn" onclick="toggleMenu()">✖</div>
+      <a href="index.html">Beranda</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="galeri.html">Galeri</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="order.html">Pesan Sekarang</a>
+    </div>
+
+    <h2 style="text-align: center">Tentang Kami</h2>
+     <h3>Selamat Datang di RASTA Chicken</h3>
+    <h3  style="text-align: center">Ayam Hidup & Ayam Beku Berkualitas</h3>
+
+    <p>
+     <b>RASTA Chicken</b> adalah peternakan ayam broiler mandiri yang berlokasi di <b>Desa Besmarak, Kecamatan Nekamese, Kabupaten Kupang, Nusa Tenggara Timur.</b> Kami berkomitmen menyediakan ayam pedaging berkualitas untuk memenuhi kebutuhan masyarakat, pelaku usaha kuliner, serta berbagai sektor usaha yang membutuhkan pasokan ayam yang segar dan terpercaya.
+    </p>
+    <p>Kami menyediakan <b>ayam hidup</b> dan <b>ayam beku</b> yang ditangani dengan baik untuk menjaga kualitas, kebersihan, dan kesegarannya. Dengan mengutamakan mutu produk, harga yang kompetitif, dan pelayanan yang ramah, RASTA Chicken berupaya menjadi mitra terpercaya bagi setiap pelanggan.
+    </p>
+     <p>Produk kami melayani berbagai kebutuhan, mulai dari rumah tangga, warung makan, katering, pedagang, hingga berbagai acara seperti acara syukuran, dan kegiatan lainnya. Baik untuk pembelian eceran maupun dalam jumlah besar, kami siap memberikan pelayanan yang cepat, mudah, dan memuaskan.
+    </p>
+    <p>Di RASTA Chicken, kami percaya bahwa kualitas produk dan kepuasan pelanggan adalah prioritas utama. Oleh karena itu, kami terus berupaya meningkatkan pelayanan dan menjaga kepercayaan pelanggan melalui produk yang berkualitas, harga yang bersahabat, serta pelayanan yang profesional.
+    </p>
+
+    <h3> Produk Kami:</h3>
+    <h4>🐔 Ayam Hidup</h4>
+    Ayam dipelihara dengan baik, diberi pakan berkualitas, dan dijaga kesehatannya sehingga menghasilkan ayam yang segar dengan bobot yang baik.
+    <ul>
+      <li>Ayam hidup sehat langsung dari kandang/peternakan sendiri</li>
+      <li>Pemotongan bersih dan higienis</li>
+      <li>Melayani potong sesuai permintaan anda</li>
+      <li>
+        Menerima pesanan dalam bentuk jumlah <span style="color: #d32525; font-size: 20px">partai kecil</span> atau
+        <span style="color: #d32525; font-size: 20px">partai besar</span> untuk kebutuhan
+        <span style="color: #65d325; font-size: 18px">Acara, Pesta</span> atau kebutuhan keluarga lainnya.
+      </li>
+    </ul>
+    <h4>❄️ Ayam Beku</h4>
+    Kami menyediakan ayam beku yang diproses secara higienis, disimpan pada suhu beku yang sesuai, sehingga kualitas,
+    kesegaran, dan cita rasanya tetap terjaga sampai ke tangan Anda.
+    <ul>
+      <li>Ayam Beku segar berkualitas.</li>
+      <li>Diproses secara bersih dan higienis.</li>
+      <li>Dibekukan dengan baik untuk menjaga kesegaran.</li>
+      <li>Cocok untuk kebutuhan rumah tangga maupun usaha.</li>
+      <li>Harga terjangkau dan bersaing.</li>
+      <li>
+        Juga Menerima pesanan dalam bentuk jumlah <span style="color: #d32525; font-size: 20px">partai kecil</span> atau
+        <span style="color: #d32525; font-size: 20px">partai besar</span> untuk kebutuhan
+        <span style="color: #65d325; font-size: 18px">Acara, Pesta</span> atau kebutuhan keluarga lainnya.
+      </li>
+    </ul>
+
+    <h3>💪 Komitmen Kami</h3>
+    <ul>
+      <li>Kami berkomitmen menyediakan ayam yang segar setiap hari.</li>
+      <li>Kami menjaga kualitas ayam agar tetap sehat dan layak konsumsi.</li>
+      <li>Kami melayani pelanggan dengan cepat, jujur, dan ramah.</li>
+      <li>Kami menetapkan harga yang adil dan transparan.</li>
+      <li>Kami memastikan kebersihan kandang dan proses penanganan ayam.</li>
+      <li>Kami mengutamakan kepuasan pelanggan dalam setiap penjualan.</li>
+      <li>Kami menjaga kepercayaan pelanggan sebagai prioritas utama.</li>
+      <li>Kami mendengarkan masukan pelanggan untuk perbaikan.</li>
+
+      <h3 style="color: darkred">“Kami utamakan kualitas, karena kepuasan pelanggan adalah tanggung jawab kami.”</h3>
+    </ul>
+
+    <h3>📍 Area Layanan</h3>
+    <p>Kami melayani untuk wilayah Desa Besmarak, Desa Oben, Tunfeu dan Desa-desa sekitarnya, Kec. Nekamese dan Kecamatan sekitarnya Dan Wilayah Kota Kupang.</p>
+
+    <div class="card">
+
+<h2 class="judul-form" style="color:#49894c;">
+  CARA PEMESANAN
+</h2>
+
+<div class="info">
+  <ol style="margin:0; padding-left:20px; line-height:1.9;">
+    <li>Klik tombol <a href="order.html"><b>Pesan Sekarang</b></a>..</li>
+
+    <li>Isi formulir pemesanan dengan lengkap.</li>
+
+    <li>Pilih jenis produk yang diinginkan
+      <b>(Ayam Hidup atau Ayam Beku)</b>.
+    </li>
+
+    <li>Pilih harga atau berat ayam sesuai kebutuhan.</li>
+
+    <li>Tentukan layanan yang diinginkan
+      <b>(Tidak dipotong, Bersih Bulu Saja, atau Bersihkan Bulu + Potong)</b>.
+    </li>
+
+    <li>Jika memilih <b>Bersihkan Bulu + Potong</b>,
+      pilih jumlah potongan ayam.
+    </li>
+
+    <li>Pilih metode pengambilan:
+      <b>Ambil di Tempat</b> atau
+      <b>Diantar ke Rumah</b>.
+    </li>
+
+    <li>Apabila memilih <b>Diantar ke Rumah</b>,
+      isi alamat pengiriman dengan lengkap.
+    </li>
+
+    <li>Periksa kembali total pembayaran yang muncul pada formulir.</li>
+
+    <li>Klik tombol <b>Pesan Sekarang via WhatsApp</b>. Anda akan langsung terhubung ke WhatsApp <b>RASTA Chicken</b> untuk mengirim pesanan.</li>
+
+    <li>Tim <b>RASTA Chicken</b> akan memverifikasi pesanan, mengonfirmasi stok, serta memberikan informasi mengenai proses pengambilan atau pengiriman.</li>
+  </ol>
 </div>
 
-<h2 style="text-align:center;">Tentang Kami</h2>
-
-<p>
-RASTA Chicken adalah peternakan ayam broiler mandiri yang berlokasi di Desa Besmarak, 
-melayani kebutuhan ayam pedaging segar untuk masyarakat sekitar dan usaha kuliner.
-</p>
-
-<h3>🐔 Apa yang Kami Tawarkan</h3>
-<ul>
-  <li>Ayam hidup sehat langsung dari kandang/peternakan sendiri</li>
-  <li>Pemotongan bersih dan higienis</li>
-  <li>Melayani potong sesuai permintaan anda</li>
-  <li>Menerima pesanan dalam bentuk jumlah <span style="color: #d32525; font-size: 20px">partai kecil</span>  atau <span style="color: #d32525; font-size: 20px">partai besar</span> untuk kebutuhan <span style="color: #65d325; font-size: 18px">Acara, Pesta</span> atau kebutuhan keluarga lainnya.</li>
-</ul>
-
-<h3>💪 Komitmen Kami</h3>
-<ul>
-  <li>Kami berkomitmen menyediakan ayam yang segar setiap hari.</li>
-  <li>Kami menjaga kualitas ayam agar tetap sehat dan layak konsumsi.</li>
-  <li>Kami melayani pelanggan dengan cepat, jujur, dan ramah.</li>
-  <li>Kami menetapkan harga yang adil dan transparan.</li>
-    <li>Kami memastikan kebersihan kandang dan proses penanganan ayam.</li>
-    <li>Kami mengutamakan kepuasan pelanggan dalam setiap penjualan.</li>
-    <li>Kami menjaga kepercayaan pelanggan sebagai prioritas utama.</li>
-    <li>Kami mendengarkan masukan pelanggan untuk perbaikan.</li>
+</div>
     
-    <h3 style="color: darkred">“Kami utamakan kualitas, karena kepuasan pelanggan adalah tanggung jawab kami.”</h3>
-</ul>
+    <h3>📞 Hubungi Kami</h3>
+    <p>Siap melayani pesanan harian maupun jumlah besar. Hubungi kami melalui WhatsApp untuk pemesanan cepat.</p>
 
-<h3>📍 Area Layanan</h3>
-<p>
-Kami melayani untuk wilayah kec. Nekamese: Desa Besmarak, Oben, Tunfeu, dll.
-</p>
+    <div class="back-wrapper">
+      <a href="index.html" class="btn-back">← Kembali</a>
+    </div>
 
-<h3>📞 Hubungi Kami</h3>
-<p>
-Siap melayani pesanan harian maupun jumlah besar.  
-Hubungi kami melalui WhatsApp untuk pemesanan cepat.
-</p>
-    
-<div class="back-wrapper">
-  <a href="index.html" class="btn-back">← Kembali</a>
-</div>    
-    
-<a href="order.html" class="btn-wa" id="dragBtn">PESAN<br>SEKARANG</a>
-    
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
-}
+    <a href="order.html" class="btn-wa" id="dragBtn">PESAN<br />SEKARANG</a>
 
-/* AGAR TOMBOL PESAN BISA DI GESER2 */  
-const btn = document.getElementById("dragBtn");
+    <script>
+      function toggleMenu() {
+        document.getElementById("menu").classList.toggle("active");
+      }
 
-let isDragging = false;
-let offsetX, offsetY;
+      /* AGAR TOMBOL PESAN BISA DI GESER2 */
+      const btn = document.getElementById("dragBtn");
 
-btn.addEventListener("touchstart", startDrag);
-btn.addEventListener("mousedown", startDrag);
+      let isDragging = false;
+      let offsetX, offsetY;
 
-function startDrag(e) {
-  isDragging = true;
-  const t = e.touches ? e.touches[0] : e;
-  offsetX = t.clientX - btn.offsetLeft;
-  offsetY = t.clientY - btn.offsetTop;
-}
+      btn.addEventListener("touchstart", startDrag);
+      btn.addEventListener("mousedown", startDrag);
 
-document.addEventListener("touchmove", drag);
-document.addEventListener("mousemove", drag);
+      function startDrag(e) {
+        isDragging = true;
+        const t = e.touches ? e.touches[0] : e;
+        offsetX = t.clientX - btn.offsetLeft;
+        offsetY = t.clientY - btn.offsetTop;
+      }
 
-function drag(e) {
-  if (!isDragging) return;
-  const t = e.touches ? e.touches[0] : e;
+      document.addEventListener("touchmove", drag);
+      document.addEventListener("mousemove", drag);
 
-  btn.style.left = (t.clientX - offsetX) + "px";
-  btn.style.top = (t.clientY - offsetY) + "px";
-  btn.style.right = "auto";
-  btn.style.bottom = "auto";
-}
+      function drag(e) {
+        if (!isDragging) return;
+        const t = e.touches ? e.touches[0] : e;
 
-document.addEventListener("touchend", snapToSide);
-document.addEventListener("mouseup", snapToSide);
+        btn.style.left = t.clientX - offsetX + "px";
+        btn.style.top = t.clientY - offsetY + "px";
+        btn.style.right = "auto";
+        btn.style.bottom = "auto";
+      }
 
-function snapToSide() {
-  if (!isDragging) return;
-  isDragging = false;
+      document.addEventListener("touchend", snapToSide);
+      document.addEventListener("mouseup", snapToSide);
 
-  const screenWidth = window.innerWidth;
-  const btnRect = btn.getBoundingClientRect();
-  const btnCenter = btnRect.left + btnRect.width / 2;
+      function snapToSide() {
+        if (!isDragging) return;
+        isDragging = false;
 
-  // kalau di kiri layar
-  if (btnCenter < screenWidth / 2) {
-    btn.style.left = "10px";
-  } else {
-    btn.style.left = (screenWidth - btnRect.width - 10) + "px";
-  }
-}    
-</script>
+        const screenWidth = window.innerWidth;
+        const btnRect = btn.getBoundingClientRect();
+        const btnCenter = btnRect.left + btnRect.width / 2;
 
-</body>
+        // kalau di kiri layar
+        if (btnCenter < screenWidth / 2) {
+          btn.style.left = "10px";
+        } else {
+          btn.style.left = screenWidth - btnRect.width - 10 + "px";
+        }
+      }
+    </script>
+  </body>
 </html>
