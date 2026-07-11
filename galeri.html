@@ -79,12 +79,17 @@
   left:15px;
   z-index:1000;
 }
-
+ 
 /* isi turun supaya tidak ketutup */
-body {
-  padding-top:60px;
-}        
-    
+body{
+    font-family:Arial, sans-serif;
+    padding-top:60px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:90px;
+    background:linear-gradient(180deg,#E8F5E9,#C8E6C9);
+}  
+ 
 /* TOMBOL WA */
 .btn-wa {
   position:fixed;
@@ -92,7 +97,7 @@ body {
   font-weight:bold;
   right:20px;
   background:#25D366;
-  color:red;
+  color:white;
   padding:8px;
   border-radius:50%;
   font-size:15px;
@@ -109,6 +114,20 @@ body {
   box-shadow: 0 2px 0 #1da851;
 }    
    
+/* Efek saat diarahkan mouse (Laptop) */
+.btn-wa:hover{
+    transform:translateY(-3px) scale(1.05);
+    background:#2EEA72;
+    box-shadow:0 8px 15px rgba(0,0,0,.35);
+}
+
+/* Efek saat disentuh (HP) */
+.btn-wa:active{
+    transform:translateY(2px) scale(.97);
+    background:#1EBE5A;
+    box-shadow:0 3px 0 #14893F;
+}  
+  
 /* TOMBOL kembali */    
 .btn-back {
   position:fixed;
@@ -132,10 +151,110 @@ body {
   border-top:2px solid #ccc; /* garis pembatas */
   padding:20px 15px;
   z-index:999;
-}    
+}
+ /* jarak judul galeri dan folder */  
+h2{
+  text-align:center;
+  margin-bottom:45px;
+}  
+  
+.folder{
+    background:#ffffff;
+    border:2px solid #0A8F3C;
+    border-radius:10px;
+    padding:15px;
+    margin:12px 0;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+    transition:.25s;
+}
+
+.folder.active{
+    background:#0A8F3C;
+    color:#fff;
+}  
+  
+.folder:hover{
+    transform:translateX(5px);
+    background:#E8F5E9;
+}
+  
+.folder.active{
+    background:#0A8F3C;
+    color:#fff;
+}  
+
+.isi-folder{
+    display:none;
+    margin-bottom:20px;
+    animation:fade .3s;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.foto{
+    width:100%;
+    border-radius:12px;
+    margin:10px 0;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+  
+/* ===== LIGHTBOX ===== */
+
+.lightbox{
+    display:none;
+    position:fixed;
+    z-index:99999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+}
+
+.lightbox-img{
+    max-width:95%;
+    max-height:90%;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(255,255,255,.3);
+    animation:zoom .25s;
+}
+
+.close-lightbox{
+    position:absolute;
+    top:20px;
+    right:25px;
+    color:#fff;
+    font-size:40px;
+    cursor:pointer;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}  
 </style>
 </head>
-<body style="font-family:Arial; padding:20px;">
+<body>
     
 <div class="topbar"></div>    
     
@@ -150,12 +269,54 @@ body {
   <a href="kontak.html">Kontak</a>
   <a href="order.html">Pesan Sekarang</a>
 </div>    
+  
+<h2>📸 Galeri RASTA Chicken</h2>
 
-<h2 style="text-align: center">Galeri RASTA Chicken</h2>
+<div class="folder" onclick="toggleFolder('hidup')">
+📁 Ayam Hidup (2)
+</div>
 
-<img src="foto%201.png" width="100%"><br><br>
-<img src="foto.jpg" width="100%">
-<img src="ayam.jpg" width="100%">
+<div id="hidup" class="isi-folder">
+    <img src="foto.jpg" class="foto" onclick="lihatFoto(this)">
+    <img src="foto%201.png" class="foto" onclick="lihatFoto(this)">
+</div>
+
+<div class="folder" onclick="toggleFolder('beku')">
+📁 Ayam Beku (1)
+</div>
+
+<div id="beku" class="isi-folder">
+    <img src="ayambeku.jpeg" class="foto" onclick="lihatFoto(this)">
+    <img src="beku2.jpg" class="foto">
+    <img src="beku3.jpg" class="foto">
+</div>
+
+<div class="folder" onclick="toggleFolder('potong')">
+📁 Proses Potong (0)
+</div>
+
+<div id="potong" class="isi-folder">
+    <img src="potong1.jpg" class="foto">
+    <img src="potong2.jpg" class="foto">
+</div>
+
+<div class="folder" onclick="toggleFolder('freezer')">
+📁 Freezer (0)
+</div>
+
+<div id="freezer" class="isi-folder">
+    <img src="freezer1.jpg" class="foto">
+    <img src="freezer2.jpg" class="foto">
+</div>
+
+<div class="folder" onclick="toggleFolder('kemasan')">
+📁 Kemasan (0)
+</div>
+
+<div id="kemasan" class="isi-folder">
+    <img src="kemasan1.jpg" class="foto">
+    <img src="kemasan2.jpg" class="foto">
+</div>
 
 <div class="back-wrapper">
   <a href="#" onclick="goBack()" class="btn-back">← Kembali</a>
@@ -171,8 +332,8 @@ function toggleMenu() {
 function goBack() {
   window.history.back();
 }
-
-/* AGAR TOMBOL PESAN BISA DI GESER2 */    
+  
+/* AGAR TOMBOL PESAN BISA DI GESER2 */
 const btn = document.getElementById("dragBtn");
 
 let isDragging = false;
@@ -218,8 +379,53 @@ function snapToSide() {
   } else {
     btn.style.left = (screenWidth - btnRect.width - 10) + "px";
   }
-}    
+}
+  
+function toggleFolder(id){
+
+    // Tutup semua folder
+    document.querySelectorAll(".isi-folder").forEach(function(el){
+        if(el.id !== id){
+            el.style.display = "none";
+        }
+    });
+
+    // Hapus warna aktif dari semua folder
+    document.querySelectorAll(".folder").forEach(function(el){
+        el.classList.remove("active");
+    });
+
+    // Folder yang dipilih
+    let isi = document.getElementById(id);
+
+    // Tombol folder yang diklik
+    let tombol = document.querySelector('[onclick="toggleFolder(\''+id+'\')"]');
+
+    if(isi.style.display === "block"){
+        isi.style.display = "none";
+    }else{
+        isi.style.display = "block";
+        tombol.classList.add("active");
+    }
+
+}
+  
+/* ===== LIGHTBOX ===== */
+
+function lihatFoto(img){
+    document.getElementById("fotoBesar").src = img.src;
+    document.getElementById("lightbox").style.display="flex";
+}
+  
+function tutupFoto(){
+    document.getElementById("lightbox").style.display="none";
+}  
 </script>    
 
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="tutupFoto()">
+    <span class="close-lightbox">&times;</span>
+    <img id="fotoBesar" class="lightbox-img">
+</div>
 </body>
 </html>
