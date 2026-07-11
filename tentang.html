@@ -85,7 +85,8 @@
       }
 
       body {
-        font-family: Arial;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #E8F5E9, #A5D6A7);
         padding: 20px;
         padding-top: 60px; /* biar tidak ketutup tombol */
       }
@@ -105,7 +106,7 @@
         font-weight: bold;
         right: 20px;
         background: #25d366;
-        color: red;
+        color: white;
         padding: 8px;
         border-radius: 50%;
         font-size: 15px;
@@ -121,7 +122,21 @@
         transform: translateY(4px);
         box-shadow: 0 2px 0 #1da851;
       }
+      
+      /* Efek saat diarahkan mouse (Laptop) */
+.btn-wa:hover{
+    transform:translateY(-3px) scale(1.05);
+    background:#2EEA72;
+    box-shadow:0 8px 15px rgba(0,0,0,.35);
+}
 
+/* Efek saat disentuh (HP) */
+.btn-wa:active{
+    transform:translateY(2px) scale(.97);
+    background:#1EBE5A;
+    box-shadow:0 3px 0 #14893F;
+}
+      
       /* TOMBOL kembali */
       .btn-back {
         position: fixed;
@@ -261,7 +276,7 @@
       isi alamat pengiriman dengan lengkap.
     </li>
     <li>Periksa kembali total pembayaran yang muncul pada formulir.</li>
-    <li>Klik tombol <b>Pesan Sekarang via WhatsApp</b>. Anda akan langsung terhubung ke WhatsApp <b>RASTA Chicken</b> untuk mengirim pesanan.</li>
+    <li>Klik tombol <b>Pesan Sekarang (via WhatsApp)</b>. Anda akan langsung terhubung ke WhatsApp <b>RASTA Chicken</b> untuk mengirim pesanan.</li>
     <li>Tim <b>RASTA Chicken</b> akan memverifikasi pesanan, mengonfirmasi stok, serta memberikan informasi mengenai proses pengambilan atau pengiriman.</li>
   </ol>
 </div>
