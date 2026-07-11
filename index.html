@@ -27,7 +27,8 @@ body {
   top:15px;
   left:15px;
   font-size:25px;
-  color:#000;
+  color:white;
+  text-shadow:0 2px 5px rgba(0,0,0,.5);
   cursor:pointer;
   z-index:1000;
 }
@@ -89,10 +90,8 @@ body {
   );
 }
 
-/* RESPONSIVE */
-@media (max-width:768px) {  
 .header h1 {
-  font-size:28px;
+  font-size:40px;
   font-weight:bold;
   color:yellow;
   text-align: center;
@@ -106,7 +105,6 @@ body {
   font-size:18px;
   margin-top:5px;
   text-align: center;
-  font-size:14px;
 }
 
 /* GAMBAR */
@@ -115,6 +113,10 @@ body {
   margin-top:-40px;
 }
 
+  .hero-beku{
+    margin-top:80px;
+}
+  
 /* SECTION */
 .section {
   margin-top:-40px;
@@ -135,6 +137,8 @@ body {
   text-align: center;
 }
 
+  
+  
 .section ul {
   font-size:14px;
   line-height:1.6;
@@ -168,6 +172,15 @@ body {
   color:white;
   padding:15px;
   font-size:14px;
+  text-align:center;
+}
+  
+  .copyright{
+  font-size:18px;
+  font-weight:bold;
+  opacity:0.6;
+  letter-spacing:1px;
+  text-transform:uppercase;
 }
 
 /* TOMBOL PESAN */
@@ -176,7 +189,7 @@ body {
   bottom:50px;
   right:20px;
   background:#25D366;
-  color:red;
+  color:white;
   padding:8px;
   border-radius:50%;
   font-size:15px;
@@ -193,6 +206,20 @@ body {
   transform: translateY(4px);
   box-shadow: 0 2px 0 #1da851;
 }
+  
+/* Efek saat diarahkan mouse (Laptop) */
+.btn-wa:hover{
+    transform:translateY(-3px) scale(1.05);
+    background:#2EEA72;
+    box-shadow:0 8px 15px rgba(0,0,0,.35);
+}
+
+/* Efek saat disentuh (HP) */
+.btn-wa:active{
+    transform:translateY(2px) scale(.97);
+    background:#1EBE5A;
+    box-shadow:0 3px 0 #14893F;
+}  
 </style>
 </head>
 
@@ -225,7 +252,7 @@ body {
 
   <!-- INFO -->
   <div class="section" id="info">
-    <h2>RASTA Chicken</h2>
+    <h2>🐔 Ayam Hidup</h2>
     <ul>
       <li>✔ Ayam sehat & segar langsung dari kandang</li>
       <li>✔ Potong & Bersih bulu <span>GRATIS..!</span></li>
@@ -233,19 +260,27 @@ body {
       <li>✔ Bisa potong sesuai permintaan</li>
     </ul>
   </div>
+  
+  <div class="hero hero-beku">
+  <img src="ayambeku.jpeg">
+</div>
 
-  <!-- GALERI -->
-  <div class="gallery" id="galeri">
-    <img src="https://images.unsplash.com/photo-1604908554007-21d6b9c4fcd4">
-    <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a">
-    <img src="https://images.unsplash.com/photo-1585238342028-4c2c9b9b6e3f">
+  <!-- INFO -->
+  <div class="section" id="info" style="background: linear-gradient(135deg,#29B6F6,#B3E5FC);">
+    <h2 style="color:#01579B;">❄️ Ayam Beku</h2>
+    <ul style="color:#003366;">
+      <li>✔ Ayam beku segar berkualitas</li>
+      <li>✔ Disimpan dalam freezer sehingga tetap segar</li>
+      <li>✔ Praktis, siap dimasak kapan saja</li>
+      <li>✔ Tersedia pilihan utuh atau sesuai jumlah potongan</li>
+    </ul>
   </div>
 
   <!-- KONTAK -->
-  <div class="contact" id="kontak">
-    📞 0815 2925 9407 <br>
-    📍 Desa Besmarak - Nekamese - Kab. Kupang
-  </div>
+  <div class="contact">
+  <span class="copyright">© 2026 RASTA Chicken.</span><br>
+    All Rights Reserved
+</div>
 
 </div>
 
