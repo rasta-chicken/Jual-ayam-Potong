@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RASTA Chicken</title>
+  
+<link rel="icon" href="logo.png">  
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
+  
+html{
+  scroll-behavior:smooth;
+}  
 
 body {
   font-family: Arial, sans-serif;
@@ -123,6 +129,7 @@ body {
   padding:20px;
   background:#0a8f3c;
   color:white;
+  transition:.3s;
   clip-path: polygon(
     0 20%,
     15% 0,
@@ -137,7 +144,9 @@ body {
   text-align: center;
 }
 
-  
+.section:hover{
+  transform:translateY(-5px);
+}
   
 .section ul {
   font-size:14px;
@@ -200,11 +209,7 @@ body {
   box-shadow: 0 6px 0 #1da851;
   transition: all 0.1s ease;
   cursor:grab;
-}
-
-.btn-wa:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 #1da851;
+  animation: pulse 2s infinite;
 }
   
 /* Efek saat diarahkan mouse (Laptop) */
@@ -220,6 +225,22 @@ body {
     background:#1EBE5A;
     box-shadow:0 3px 0 #14893F;
 }  
+  
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
 </style>
 </head>
 
@@ -247,7 +268,7 @@ body {
 
   <!-- GAMBAR -->
   <div class="hero">
-    <img src="foto.jpg" alt="Ayam Broiler RASTA Chicken">
+    <img src="foto.jpg" loading="lazy" alt="Ayam Broiler RASTA Chicken" >
   </div>
 
   <!-- INFO -->
@@ -262,7 +283,7 @@ body {
   </div>
   
   <div class="hero hero-beku">
-  <img src="ayambeku.jpeg" alt="Ayam Beku RASTA Chicken">
+  <img src="ayambeku.jpeg" loading="lazy" alt="Ayam Beku RASTA Chicken">
 </div>
 
   <!-- INFO -->
