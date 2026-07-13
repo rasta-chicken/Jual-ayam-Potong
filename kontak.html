@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontak</title>
+  
+<link rel="icon" href="logo.png">  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">  
+  
 <style>
     
 /* MENU GARIS 3 */
@@ -81,8 +86,11 @@
 }
 
 /* isi turun supaya tidak ketutup */
-body {
-  padding-top:60px;
+body{
+    font-family:Arial;
+    padding:20px;
+    padding-top:60px;
+    padding-bottom:120px;
 }
   
 .contact-card{
@@ -125,7 +133,7 @@ transform:translateY(-2px);
 /* TOMBOL WA */
 .btn-wa {
   position:fixed;
-  bottom:50px;
+  bottom:85px;
   font-weight:bold;
   right:20px;
   background:#25D366;
@@ -175,7 +183,7 @@ transform:scale(1);
 /* TOMBOL kembali */    
 .btn-back {
   position:fixed;
-  bottom:20px;
+  bottom:54px;
   left:15px;
   color:purple;            /* warna ungu */
   text-decoration:underline; /* garis bawah */
@@ -186,65 +194,67 @@ transform:scale(1);
 } 
     
 /* GARIS BATAS BAWAH */     
-.back-wrapper {
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#fff;
-  border-top:2px solid #ccc; /* garis pembatas */
-  padding:20px 15px;
-  z-index:999;
+.back-wrapper{
+    position:fixed;
+    left:0;
+    bottom:47px;   /* tepat di atas footer */
+    width:100%;
+    background:#fff;
+    border-top:2px solid #ccc;
+    padding:12px 15px;
+    z-index:999;
 }
   
 .footer{
-text-align:center;
-padding:20px;
-margin-top:50px;
-background:#111;
-color:#fff;
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:12px;
+    z-index:998;
+    font-size:14px;
 }
   
 .footer-social{
     margin:25px 0;
 }
-
-.footer-social a{
+  
+.fb-icon{
     display:inline-flex;
     justify-content:center;
     align-items:center;
-    width:60px;
-    height:60px;
+    width:55px;
+    height:55px;
     background:#1877F2;
-    color:white;
+    color:#fff;
     border-radius:50%;
     font-size:30px;
     text-decoration:none;
     transition:.3s;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
 }
 
-.footer-social a:hover{
-    transform:translateY(-8px) scale(1.1);
-    box-shadow:0 12px 25px rgba(0,0,0,.4);
+.fb-icon:hover{
+    transform:scale(1.15);
     background:#0d65d9;
 }  
-  
-.social{
-    margin-top:25px;
-    text-align:center;
-}
-
-.social a{
-    display:inline-block;
-    font-size:30px;
-    margin:0 10px;
-    text-decoration:none;
-    transition:.3s;
-}
 
 .social a:hover{
     transform:translateY(-5px) scale(1.2);
+}  
+  
+.phone-link{
+    color:#0a8f3c;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.phone-link:hover{
+    color:#08732f;
 }  
   
 </style>
@@ -271,8 +281,7 @@ color:#fff;
 
 <p><strong>RASTA Chicken</strong></p>
 
-<p>📱 WhatsApp</p>
-<p>0822 7886 1707</p>
+
 
 <p>📍 Alamat</p>
 <p>Desa Besmarak, Kec. Nekamese, Kab. Kupang -NTT</p>
@@ -280,26 +289,34 @@ color:#fff;
 <p>🕒 Jam Operasional</p>
 <p>Setiap Hari<br>07.00 - 24.00 WITA</p>
 
+<p>📱 Telepon</p>
+<p>
+    <a href="tel:+6282278861707" class="phone-link">
+        <i class="fa-solid fa-phone"></i> 0822 7886 1707
+    </a>
+</p>  
+  
 <a href="https://wa.me/6282278861707" class="chat-btn">
 💬 Chat WhatsApp
 </a>
-  
+
 <div class="footer-social">
 
     <a href="https://www.facebook.com/profile.php?id=61560191006636"
-       target="_blank"
-       title="RASTA Chicken">
-        <i class="fa-brands fa-facebook-f"></i>
-    </a>
+   class="fb-icon"
+   target="_blank"
+   title="Facebook RASTA Chicken">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
 
 </div>  
   
 <h3>📍 Lokasi Kami</h3>
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d727.1978275128106!2d123.66340926946836!3d-10.253401179678578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c568f424433293d%3A0x8639c56c7d4fc106!2sBesmarak%20Permai%20Farm!5e1!3m2!1sid!2sid!4v1783697962261!5m2!1sid!2sid" 
-        width="300" 
-        height="225" 
-        style="border:0;" 
+        width="100%" 
+        height="250" 
+        style="border:0;border-radius:12px;" 
         allowfullscreen="" 
         loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
       </iframe>  
