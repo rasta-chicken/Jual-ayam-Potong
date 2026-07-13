@@ -17,6 +17,7 @@ html{
 body {
   font-family: Arial, sans-serif;
   background:#eaeaea;
+  padding-bottom:80px;
 }
 
 .container {
@@ -200,7 +201,7 @@ box-shadow:0 5px 15px rgba(0,0,0,.2);
 
 .price-card span{
 font-size:30px;
-olor:#e53935;
+color:#e53935;
 -webkit-text-stroke:0;
 }
 
@@ -225,18 +226,23 @@ color:#003366;
 }
 
 /* CONTACT */
-.contact {
-  background:#111;
-  color:white;
-  padding:15px;
-  font-size:14px;
-  text-align:center;
+.footer{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    background:#111;
+    color:#bdbdbd;
+    padding:12px;
+    text-align:center;
+    font-size:15px;
+    z-index:998;
 }
   
   .copyright{
   font-size:18px;
   font-weight:bold;
-  opacity:0.6;
+  color:#bdbdbd;
   letter-spacing:1px;
   text-transform:uppercase;
 }
@@ -244,7 +250,7 @@ color:#003366;
 /* TOMBOL PESAN */
 .btn-wa {
   position:fixed;
-  bottom:50px;
+  bottom:65px;
   right:20px;
   background:#25D366;
   color:white;
@@ -367,10 +373,10 @@ Mulai Rp <span>55.000</span> / ekor
   </div>
 
   <!-- KONTAK -->
-  <div class="contact">
+  <footer class="footer">
   <span class="copyright">© 2026 RASTA Chicken.</span><br>
-    All Rights Reserved
-</div>
+    Ayam Broiler Segar Berkualitas
+</footer>
 
 </div>
 
