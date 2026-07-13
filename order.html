@@ -403,16 +403,16 @@
           <select id="wilayah" onchange="hitungTotal()">
           <option value="">Pilih Wilayah</option>
           <option value="0">Desa Besmarak (Gratis)</option>
-          <option value="5000">Oben</option>
-          <option value="5000">Noesinas</option>
-          <option value="7000">Belo</option>
-          <option value="10000">BTN-Kolhua</option>
-          <option value="5000">Oemasin</option>
-          <option value="5000">Oeletsala</option>
-          <option value="7000">Kuaklalo</option>
-          <option value="10000">Baumata</option>
-          <option value="15000">Penfui</option>
-          <option value="15000">Kupang Kota</option>
+          <option value="5000">Oben (Rp5.000)</option>
+          <option value="5000">Noesinas (Rp5.000)</option>
+          <option value="7000">Belo (Rp7.000)</option>
+          <option value="5000">Oemasin (Rp5.000)</option>
+          <option value="5000">Oeletsala (Rp5.000)</option>
+          <option value="7000">Kuaklalo (Rp7.000)</option>
+          <option value="10000">BTN-Kolhua (Rp10.000)</option>
+          <option value="10000">Baumata (Rp10.000)</option>
+          <option value="15000">Penfui(Rp15.000)</option>
+          <option value="15000">Kupang Kota (Rp15.000)</option>
           </select>
           <span class="check">✔</span>
         </div>
@@ -689,7 +689,7 @@ ${pengambilanTerpilih === "Diantar ke rumah"
         
 gtag('event', 'klik_whatsapp', {
   event_category: 'Order',
-  event_label: 'Pesan Sekarang'
+  event_label: 'Pesan Sekarang (via WhatsApp)'
 });
 
         window.open("https://wa.me/6282278861707?text=" + encodeURIComponent(pesan), "_blank");
