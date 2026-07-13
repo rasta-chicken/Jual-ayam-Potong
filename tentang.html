@@ -116,12 +116,10 @@
         box-shadow: 0 6px 0 #1da851;
         transition: all 0.1s ease;
         cursor: grab;
+        animation: pulse 2s infinite;
       }
 
-      .btn-wa:active {
-        transform: translateY(4px);
-        box-shadow: 0 2px 0 #1da851;
-      }
+}
       
       /* Efek saat diarahkan mouse (Laptop) */
 .btn-wa:hover{
@@ -136,6 +134,20 @@
     background:#1EBE5A;
     box-shadow:0 3px 0 #14893F;
 }
+      
+@keyframes pulse {
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}      
       
       /* TOMBOL kembali */
       .btn-back {
