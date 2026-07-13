@@ -159,6 +159,55 @@ body {
   font-size:18px;
   -webkit-text-stroke: 0.5px white;
 }
+  
+/* ========================= */
+/* PRICE CARD */
+/* ========================= */
+
+.price-card{
+margin-top:20px;
+padding:18px;
+background:#fff;
+color:#222;
+border-radius:15px;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+  
+.btn-harga{
+    display:inline-block;
+    margin-top:10px;
+    padding:8px 16px;
+    background:#0a8f3c;
+    color:#fff;
+    text-decoration:none;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-harga:hover{
+    background:#08732f;
+    transform:translateY(-2px);
+}
+
+.btn-harga:active{
+    transform:translateY(1px);
+}  
+
+.price-card span{
+font-size:30px;
+olor:#e53935;
+-webkit-text-stroke:0;
+}
+
+.price-card.blue{
+background:#ffffff;
+color:#003366;
+}    
 
 /* GALERI */
 .gallery {
@@ -280,6 +329,16 @@ transform:scale(1);
       <li>✔ Potong Cepat & Bersih (rapi & higienis)</li>
       <li>✔ Bisa potong sesuai permintaan</li>
     </ul>
+    
+  <div class="price-card">
+💰 <strong>Harga Ayam Hidup</strong><br><br>
+Mulai Rp <span>55.000</span> / ekor
+    
+<a href="order.html" class="btn-harga">
+        Lihat Semua Pilihan Harga →
+    </a>    
+</div>
+    
   </div>
   
   <div class="hero hero-beku">
@@ -295,6 +354,16 @@ transform:scale(1);
       <li>✔ Praktis, siap dimasak kapan saja</li>
       <li>✔ Tersedia pilihan utuh atau sesuai jumlah potongan</li>
     </ul>
+    
+    <div class="price-card blue">
+    💰 <strong>Harga Ayam Beku</strong><br><br>
+    Mulai Rp <span>35.000</span> / ekor
+
+      <a href="order.html" class="btn-harga">
+        Lihat Semua Pilihan Harga →
+    </a>
+</div>
+    
   </div>
 
   <!-- KONTAK -->
